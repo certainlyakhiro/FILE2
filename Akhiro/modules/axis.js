@@ -9,7 +9,7 @@ module.exports = {
     usage: "axis [ query ]",
     hasPrefix: false,
   },
-  async onRun({ api, event, args }) {
+  async onRun({ api, event, box, args, commandName }) {
     const query = args.join(" ");
     if (!query) {
       api.sendMessage(
@@ -29,7 +29,12 @@ module.exports = {
       const response = await axios.get(
         `https://lianeapi.onrender.com/ask/axis?apiKey=j86bwkwo-8hako-12C&query=${encodeURIComponent(query)}`,
       );
-      api.sendMessage(response.data.message, event.threadID, event.messageID);
+      const i = await box.reply(response.data.message);
+      global.Akhiro.replies.set(i.messageID, {
+        commandName,
+        author: event.senderID
+      });
+      
     } catch (error) {
       console.error("Error:", error);
       api.sendMessage(
@@ -40,3 +45,5 @@ module.exports = {
     }
   },
 };
+
+module.exports.onReply = module.exports.onRun;

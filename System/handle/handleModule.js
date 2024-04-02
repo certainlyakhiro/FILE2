@@ -68,7 +68,7 @@ module.exports = function ({ api, event, box }) {
           ) {
             //do nothing
           }
-          module.onRun({ api, event, args, box, fonts });
+          module.onRun({ api, event, args, box, fonts, commandName: moduleName });
         } catch (error) {
           console.error(error);
         }
