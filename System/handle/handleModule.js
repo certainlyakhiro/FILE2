@@ -13,6 +13,7 @@ function aliases(command) {
   }
   return null;
 }
+// commenter: rui; message: 😱😲;
 //liane created the noPrefix
 
 module.exports = function ({ api, event, box }) {

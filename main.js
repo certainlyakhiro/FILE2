@@ -16,6 +16,7 @@ global.Akhiro = {
   /*botPrefix: config.botPrefix,
   botAdmins: config.botAdmins,*/
   modules: {},
+  //haha wala ako alam sa map
   events: new Map(),
   cooldown: new Map(),
 };
