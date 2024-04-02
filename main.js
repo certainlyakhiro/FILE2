@@ -3,19 +3,32 @@ const path = require("path");
 const figlet = require("figlet");
 const chalk = require("chalk");
 const login = require("./System/login");
-const config = require("./config.json");
+/*const config = require("./config.json");*/
 const { logger } = require("./System/logger");
 const express = require('express');
 const app = express();
 
 global.Akhiro = {
-  config: config,
-  botPrefix: config.botPrefix,
-  botAdmins: config.botAdmins,
+  /*config: config,*/
+  get config() {
+    return JSON.parse(fs.readFileSync(path.join(__dirname, "config.json"), "utf-8"));
+  },
+  /*botPrefix: config.botPrefix,
+  botAdmins: config.botAdmins,*/
   modules: {},
   events: new Map(),
   cooldown: new Map(),
 };
+Object.assign(global.Akhiro, {
+  get botPrefix() {
+    return global.Akhiro.config.botPrefix;
+  },
+  get botAdmins() {
+    return global.Akhiro.config.botAdmins;
+  }
+});
+
+const { config } = global.Akhiro;
 
 async function start() {
   app.get("/", (req, res) => {

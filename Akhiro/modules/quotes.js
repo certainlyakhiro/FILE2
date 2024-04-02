@@ -17,7 +17,16 @@ module.exports = {
     try {
       const response = await axios.get(`https://a-k-h-i-r-o-quotes-api.onrender.com/randomQuote?key=AkhiroAPI&category=${category}`);
       const { quote, author, category: quoteCategory } = response.data.data; // Fixed: Destructuring the response data
-      const message = `Author: ${author}\n${quote}\nCategory: ${quoteCategory}`; // Fixed: Constructed the message with quote, author, and category
+      const message = ` 　　♡             ∩　 ∩
+　　　 (๑＾◡＾๑) ♡
+┏━♪━･━･━〇━･〇･━･+☆+━┓
+               𝗤𝗨𝗢𝗧𝗘𝗦
+
+  ${quote}
+           
+             - ${author}
+
+┗━+☆+･━･━･━ + ･━･━･♬━┛ `; // Fixed: Constructed the message with quote, author, and category
       api.sendMessage(message, event.threadID); // Fixed: Sent the constructed message as a response
     } catch (error) {
       console.error("Error fetching quote:", error);

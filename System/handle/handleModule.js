@@ -1,6 +1,5 @@
 const fonts = require("./createFonts");
 
-
 function aliases(command) {
   for (const [moduleNames, module] of Object.entries(global.Akhiro.modules)) {
     const aliases = moduleNames.split(",");
