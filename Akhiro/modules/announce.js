@@ -6,20 +6,13 @@ module.exports = {
   metadata: {
     name: "announce",
     role: 1,
-    author: "AkhiroDEV",
+    author: "AkhiroDEV | LiANE | Rui",
     hasPrefix: false,
     description: "Announce a message to all groups",
+    botAdmin: true,
     usage: "announce [ message ]",
   },
   onRun: async function ({ api, event, args }) {
-    const master = "61554222594723";
-    if (!master.includes(event.senderID))
-      return api.sendMessage(
-        `ℹ️ | Only the permitted user can use this command.`,
-        event.threadID,
-        event.messageID,
-      );
-
     const threadList = await api.getThreadList(25, null, ["INBOX"]);
     let sentCount = 0;
     const custom = args.join(" ");
@@ -43,7 +36,7 @@ module.exports = {
         );
         sentCount++;
       } catch (error) {
-        console.error("Error sending a message:", error);
+        console.error("Error sending  message:", error);
       }
     }
 

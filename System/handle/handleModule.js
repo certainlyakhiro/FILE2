@@ -17,7 +17,9 @@ function aliases(command) {
 //liane created the noPrefix
 
 module.exports = function ({ api, event, box }) {
-  const { botPrefix } = global.Akhiro;
+  const { botPrefix, botAdmins } = global.Akhiro.config;
+
+  // i updated it uwu ♥️
 
   try {
     let [command, ...args] = event.body
@@ -40,6 +42,15 @@ module.exports = function ({ api, event, box }) {
       const module = aliases(moduleName);
       if (module) {
         try {
+          // uwu
+          if (!botAdmins?.includes(event.senderID) && module.metadata?.botAdmin) {
+      return api.sendMessage(
+        `ℹ️ | Only the permitted user can use this command.`,
+        event.threadID,
+        event.messageID,
+      );
+          }
+          
           if (
             module.metadata?.hasPrefix !== false &&
             !event.body?.toLowerCase().startsWith(botPrefix)

@@ -15,6 +15,15 @@ global.Akhiro = {
       fs.readFileSync(path.join(__dirname, "config.json"), "utf-8"),
     );
   },
+  set config(config) {
+    const data = global.Akhiro.config;
+    const finalData = {
+      ...data,
+      ...config
+    }
+    const str = JSON.stringify(finalData, null, 2);
+    fs.writeFileSync(path.join(__dirname, "config.json"), str);
+  },
   /*botPrefix: config.botPrefix,
   botAdmins: config.botAdmins,*/
   modules: {},
@@ -25,9 +34,6 @@ global.Akhiro = {
 Object.assign(global.Akhiro, {
   get botPrefix() {
     return global.Akhiro.config.botPrefix;
-  },
-  set botPrefix(prefix) {
-    const { botPrefix }
   },
   get botAdmins() {
     return global.Akhiro.config.botAdmins;
