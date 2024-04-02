@@ -30,6 +30,7 @@ global.Akhiro = {
   //haha wala ako alam sa map
   events: new Map(),
   cooldown: new Map(),
+  replies: new Map()
 };
 Object.assign(global.Akhiro, {
   get botPrefix() {
