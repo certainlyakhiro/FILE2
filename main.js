@@ -5,13 +5,15 @@ const chalk = require("chalk");
 const login = require("./System/login");
 /*const config = require("./config.json");*/
 const { logger } = require("./System/logger");
-const express = require('express');
+const express = require("express");
 const app = express();
 
 global.Akhiro = {
   /*config: config,*/
   get config() {
-    return JSON.parse(fs.readFileSync(path.join(__dirname, "config.json"), "utf-8"));
+    return JSON.parse(
+      fs.readFileSync(path.join(__dirname, "config.json"), "utf-8"),
+    );
   },
   /*botPrefix: config.botPrefix,
   botAdmins: config.botAdmins,*/
@@ -24,23 +26,24 @@ Object.assign(global.Akhiro, {
   get botPrefix() {
     return global.Akhiro.config.botPrefix;
   },
+  set botPrefix(prefix) {
+    const { botPrefix }
+  },
   get botAdmins() {
     return global.Akhiro.config.botAdmins;
-  }
+  },
 });
 
 const { config } = global.Akhiro;
 
 async function start() {
   app.get("/", (req, res) => {
-    res.sendFile(path.join(
-      __dirname, 'System', 'public', 'index.html'
-    ));
+    res.sendFile(path.join(__dirname, "System", "public", "index.html"));
   });
 
   app.listen(3000);
 
-  const utils = require('./utils');
+  const utils = require("./utils");
   global.Akhiro.utils = utils; //lia
   const state = fs.readJSONSync("./cookies.json");
 
@@ -83,12 +86,12 @@ async function start() {
         try {
           var listenEmitter = api.listenMqtt((error, event) => {
             if (error) {
-            if (error === 'Connection closed.') {
-              console.error(`Error during API listen: ${error}`, userid);
+              if (error === "Connection closed.") {
+                console.error(`Error during API listen: ${error}`, userid);
+              }
+              console.log(error);
             }
-            console.log(error)
-          }
-            const listener = require("./System/listen")
+            const listener = require("./System/listen");
             listener({ api, event });
           });
         } catch (error) {

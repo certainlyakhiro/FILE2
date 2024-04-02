@@ -9,11 +9,16 @@ module.exports = {
     author: "AkhiroDEV",
     hasPrefix: false,
     description: "Announce a message to all groups",
-    usage: "announce [ message ]"
+    usage: "announce [ message ]",
   },
   onRun: async function ({ api, event, args }) {
-    const master = "61554222594723"; 
-    if (!master.includes(event.senderID)) return api.sendMessage(`ℹ️ | Only the permitted user can use this command.`, event.threadID, event.messageID);
+    const master = "61554222594723";
+    if (!master.includes(event.senderID))
+      return api.sendMessage(
+        `ℹ️ | Only the permitted user can use this command.`,
+        event.threadID,
+        event.messageID,
+      );
 
     const threadList = await api.getThreadList(25, null, ["INBOX"]);
     let sentCount = 0;
@@ -32,9 +37,9 @@ module.exports = {
 ╰┈➤ ${custom}
 ━━━━━━━━━━━━━━━━━━━
 📅 | 𝗗𝗔𝗧𝗘: ${currentDate}
-⏰ | 𝗧𝗜𝗠𝗘: ${currentTime}`
+⏰ | 𝗧𝗜𝗠𝗘: ${currentTime}`,
           },
-          thread.threadID
+          thread.threadID,
         );
         sentCount++;
       } catch (error) {
@@ -44,7 +49,9 @@ module.exports = {
 
     async function sendAttachment(thread) {
       try {
-        const attachment = createReadStream(resolve(__dirname, "cache", "system", "announce.mp4"));
+        const attachment = createReadStream(
+          resolve(__dirname, "cache", "system", "announce.mp4"),
+        );
         await api.sendMessage({ attachment }, thread.threadID);
       } catch (error) {
         console.error("Error sending attachment:", error);
@@ -55,7 +62,11 @@ module.exports = {
       if (sentCount >= 20) {
         break;
       }
-      if (thread.isGroup && thread.name !== thread.threadID && thread.threadID !== event.threadID) {
+      if (
+        thread.isGroup &&
+        thread.name !== thread.threadID &&
+        thread.threadID !== event.threadID
+      ) {
         await sendMessage(thread);
         await sendAttachment(thread);
       }
@@ -66,8 +77,8 @@ module.exports = {
     } else {
       api.sendMessage(
         "› No eligible group threads found to send the message to.",
-        event.threadID
+        event.threadID,
       );
     }
-  }
+  },
 };

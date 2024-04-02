@@ -1,10 +1,10 @@
 // rui waz here -_-
 // i liek modular code
 
-module.exports = function({ api, event }) {
-  const { logger } = require('./logger');
-  const handleModule = require('./handle/handleModule');
-  const handleEvent = require('./handle/handleEvent');
+module.exports = function ({ api, event }) {
+  const { logger } = require("./logger");
+  const handleModule = require("./handle/handleModule");
+  const handleEvent = require("./handle/handleEvent");
 
   const box = {
     react: (emoji) => {
@@ -26,15 +26,15 @@ module.exports = function({ api, event }) {
   const entryObj = {
     api,
     event,
-    box
-  }
+    box,
+  };
 
   switch (event.type) {
     case "message":
       handleModule({ ...entryObj });
       break;
     case "event":
-      handleEvent({ ...entryObj })
+      handleEvent({ ...entryObj });
       break;
   }
 };

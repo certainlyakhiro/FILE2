@@ -2,8 +2,12 @@ function aliases(command) {
   if (!global.Akhiro || !global.Akhiro.modules) return null;
 
   for (const [moduleNames, module] of Object.entries(global.Akhiro.modules)) {
-    const aliases = moduleNames.split(',');
-    if (aliases.some(alias => alias.trim().toLowerCase() === command?.toLowerCase())) {
+    const aliases = moduleNames.split(",");
+    if (
+      aliases.some(
+        (alias) => alias.trim().toLowerCase() === command?.toLowerCase(),
+      )
+    ) {
       return module;
     }
   }
@@ -17,7 +21,7 @@ module.exports = {
     usage: "[command]",
     author: "Rui",
     role: 0,
-    hasPrefix: false
+    hasPrefix: false,
   },
   onRun: async ({ box, fonts, args }) => {
     const commands = Object.values(global.Akhiro?.modules || {});
@@ -45,7 +49,9 @@ module.exports = {
       const targetCommand = aliases(commandName);
       if (targetCommand) {
         const { name, description, usage, hasPrefix } = targetCommand.metadata;
-        const formattedUsage = usage ? usage.replace("[command]", `${botPrefix}${name}`) : "";
+        const formattedUsage = usage
+          ? usage.replace("[command]", `${botPrefix}${name}`)
+          : "";
         const prefixText = hasPrefix ? "True" : "False";
         let helpMessage = `
 ♡   ∩_∩

@@ -46,10 +46,16 @@ module.exports = function ({ api, event, box }) {
           ) {
             //liane: if no prefix, and module.metadata.hasPrefix is not false, do nothing
             return box.reply(`❌ | This command needs a prefix.`);
-          } else if (module.metadata?.hasPrefix === false && event.body?.toLowerCase().startsWith(botPrefix)) {
+          } else if (
+            module.metadata?.hasPrefix === false &&
+            event.body?.toLowerCase().startsWith(botPrefix)
+          ) {
             return box.reply(`❌ | This command cannot be used with a prefix.`);
-          } else if (module.metadata?.hasPrefix === false && !event.body?.toLowerCase().startsWith(botPrefix)) {
-            //do nothing 
+          } else if (
+            module.metadata?.hasPrefix === false &&
+            !event.body?.toLowerCase().startsWith(botPrefix)
+          ) {
+            //do nothing
           }
           module.onRun({ api, event, args, box, fonts });
         } catch (error) {

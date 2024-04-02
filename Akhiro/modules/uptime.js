@@ -1,15 +1,15 @@
-const os = require('os');
-const fs = require('fs-extra');
+const os = require("os");
+const fs = require("fs-extra");
 const startTime = new Date();
 
 module.exports = {
   metadata: {
-     name: ["up", "serverinfo"],
-     role: 0,
-     author: "AkhiroDEV | RUI",
-     hasPrefix: false,
-     description: "Shows info about AkhiroV2",
-     usage: "up",
+    name: ["up", "serverinfo"],
+    role: 0,
+    author: "AkhiroDEV | RUI",
+    hasPrefix: false,
+    description: "Shows info about AkhiroV2",
+    usage: "up",
   },
   async onRun({ api, event }) {
     try {
@@ -56,23 +56,32 @@ module.exports = {
 ╰──────────────⟡
 `;
 
-      const attachment = fs.createReadStream(__dirname + '/cache/system/info.mp4');
-      api.sendMessage({
-        body: systemInfo,
-        attachment: attachment
-      }, event.threadID, (err, messageInfo) => {
-        if (err) {
-          console.error("Error sending message with attachment:", err);
-        } else {
-          console.log("Message with attachment sent successfully:", messageInfo);
-        }
-      });
+      const attachment = fs.createReadStream(
+        __dirname + "/cache/system/info.mp4",
+      );
+      api.sendMessage(
+        {
+          body: systemInfo,
+          attachment: attachment,
+        },
+        event.threadID,
+        (err, messageInfo) => {
+          if (err) {
+            console.error("Error sending message with attachment:", err);
+          } else {
+            console.log(
+              "Message with attachment sent successfully:",
+              messageInfo,
+            );
+          }
+        },
+      );
     } catch (error) {
       console.error("Error retrieving system information:", error);
       api.sendMessage(
         "Unable to retrieve system information.",
         event.threadID,
-        event.messageID
+        event.messageID,
       );
     }
   },

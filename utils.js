@@ -1,14 +1,14 @@
-const fs = require('fs-extra');
-const path = require('path');
-const { logger } = require('./System/logger');
+const fs = require("fs-extra");
+const path = require("path");
+const { logger } = require("./System/logger");
 
 async function loadAll() {
   const modulePath = path.join(__dirname, "Akhiro", "modules");
   const eventsPath = path.join(__dirname, "Akhiro", "events");
 
-  // load all of em 
+  // load all of em
   try {
-    Object.keys(require.cache).forEach(key => delete require.cache[key]) //lia
+    Object.keys(require.cache).forEach((key) => delete require.cache[key]); //lia
     const moduleFiles = fs
       .readdirSync(modulePath)
       .filter((file) => file.endsWith(".js"));
@@ -28,7 +28,9 @@ async function loadAll() {
           logger.error(`onRun is not defined in module file: ${file}`);
         } else {
           global.Akhiro.modules[moduleFile.metadata.name] = moduleFile;
-          logger.info(`Loaded module "${moduleFile.metadata.name}" from ${file}`);
+          logger.info(
+            `Loaded module "${moduleFile.metadata.name}" from ${file}`,
+          );
         }
       } catch (error) {
         logger.error(`Error loading module from file ${file}: ${error}`);
@@ -37,7 +39,7 @@ async function loadAll() {
     console.log(`
 Loading Events
 `);
-    
+
     eventFiles.forEach((file) => {
       try {
         const eventFile = require(path.join(eventsPath, file));

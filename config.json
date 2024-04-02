@@ -11,9 +11,5 @@
     "autoMarkRead": false
   },
   "botPrefix": "/",
-  "botAdmins": [
-    "61554222594723",
-    "",
-    ""
-  ]
+  "botAdmins": ["61554222594723", "", ""]
 }

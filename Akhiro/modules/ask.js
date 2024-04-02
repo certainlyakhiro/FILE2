@@ -7,7 +7,7 @@ module.exports = {
     author: "AkhiroDEV",
     hasPrefix: false,
     description: "Ask anything to AI",
-    usage: "[ ask ]"
+    usage: "[ ask ]",
   },
   onRun: async ({ api, event, args }) => {
     try {
@@ -18,14 +18,19 @@ module.exports = {
         return;
       }
       api.sendMessageReaction("⏳", event.messageID, (err) => {}, true);
-      api.sendMessage("💭 | Thinking for response, please wait...", event.threadID); // Fixed typo: replaced ":" with ";"
+      api.sendMessage(
+        "💭 | Thinking for response, please wait...",
+        event.threadID,
+      ); // Fixed typo: replaced ":" with ";"
 
-      const response = await axios.get(`https://sandipbaruwal.onrender.com/gpt?prompt=${encodeURIComponent(prompt)}`);
+      const response = await axios.get(
+        `https://sandipbaruwal.onrender.com/gpt?prompt=${encodeURIComponent(prompt)}`,
+      );
       const answer = response.data.answer;
 
       await api.sendMessage("🤖 | 𝗥𝗘𝗦𝗣𝗢𝗡𝗦𝗘\n\n" + answer, event.threadID); // Removed extra backticks around answer
     } catch (error) {
       console.error("Error:", error.message);
     }
-  }
+  },
 };
