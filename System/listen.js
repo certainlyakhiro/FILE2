@@ -47,6 +47,9 @@ module.exports = function ({ api, event }) {
       return new Promise(res => {
         api.sendMessage(msg, event.threadID, (_, info) => res(info));
       });
+    },
+    edit(msg, mid) {
+      return new Promise(res => api.editMessage(msg, mid, () => res(true)));
     }
   }
   const entryObj = {

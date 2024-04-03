@@ -174,6 +174,9 @@ function buildAPI(globalOptions, html, jar) {
     mqttEndpoint,
     region,
     firstListen: true,
+    // Liane: Basta sa edit message
+    wsTaskNumber: 0,
+    wsReqNumber: 0
   };
 
   const api = {

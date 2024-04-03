@@ -40,7 +40,10 @@ const info = await box.reply("Test");
 
   damn a perfect goatbot reply system copy 😮
       */
-    }
+      /*
+      N T K H A N G is watching 
+      */
+    } //shish galing mo
   } catch (error) {
     entryObj.box.reply(`❌ | ${error.message}
 ${error.stack}
