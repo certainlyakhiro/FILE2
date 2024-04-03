@@ -8,6 +8,9 @@ const { logger } = require("./System/logger");
 const express = require("express");
 const app = express();
 
+process.on("unhandledRejection", (...args) => console.log(...args));
+process.on("uncaughtException", (...args) => console.log(...args));
+
 global.Akhiro = {
   /*config: config,*/
   get config() {

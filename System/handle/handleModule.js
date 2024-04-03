@@ -16,7 +16,7 @@ function aliases(command) {
 // commenter: rui; message: 😱😲;
 //liane created the noPrefix
 
-module.exports = function ({ api, event, box }) {
+module.exports = async function ({ api, event, box }) {
   const { botPrefix, botAdmins } = global.Akhiro.config;
 
   // i updated it uwu ♥️
@@ -68,8 +68,14 @@ module.exports = function ({ api, event, box }) {
           ) {
             //do nothing
           }
-          module.onRun({ api, event, args, box, fonts, commandName: moduleName });
+          await module.onRun({ api, event, args, box, fonts, commandName: moduleName });
         } catch (error) {
+          box.reply(`❌ | ${error.message}
+${error.stack}
+${error.name}
+${error.code}
+${error.path}`);
+    
           console.error(error);
         }
       } else if (event.body?.startsWith(botPrefix)) {

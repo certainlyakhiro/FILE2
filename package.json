@@ -21,6 +21,9 @@
     "mqtt": "3.0.0",
     "npmlog": "1.2.0",
     "request": "2.53.0",
-    "websocket-stream": "5.5.0"
+    "websocket-stream": "5.5.0",
+    "yt-search": "^2.10.4",
+    "ytdl-core": "^4.11.5",
+    "ytsearch": "^1.0.4"
   }
 }

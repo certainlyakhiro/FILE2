@@ -16,13 +16,14 @@ function aliases(command) {
 module.exports = async function ({ ...entryObj }) {
   const { replies } = global.Akhiro;
   const { api, event, box } = entryObj;
+  const args = event.body?.split("");
   //check box.reply and box.send on listen.js, it's reworked
   try {
     const { messageReply: replier = {} } = event;
     if (replies.has(replier.messageID)) {
       const { commandName, ...repObj } = replies.get(replier.messageID);
       const { onReply = () => {} } = aliases(commandName) || {};
-      await onReply({ ...entryObj, Reply: repObj });
+      await onReply({ ...entryObj, Reply: repObj, args });
       // onReply? Lol goatbot will sue us
       // you need to use global.Akhiro.replies.set(key, value);
       /*
@@ -40,7 +41,12 @@ const info = await box.reply("Test");
   damn a perfect goatbot reply system copy 😮
       */
     }
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    entryObj.box.reply(`❌ | ${error.message}
+${error.stack}
+${error.name}
+${error.code}
+${error.path}`);
+    console.log(error);
   }
 };
