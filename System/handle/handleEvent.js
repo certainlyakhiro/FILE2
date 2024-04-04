@@ -5,8 +5,10 @@ module.exports = async function ({ ...entryObj }) {
   try {
     for (const { metadata, onEvent } of events.values()) {
       if (event && metadata.name) {
+        const args = event.body?.split("");
         await onEvent({
           ...entryObj,
+          args
         });
       }
     }
