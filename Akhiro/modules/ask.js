@@ -9,7 +9,7 @@ module.exports = {
     description: "Ask anything to AI",
     usage: "[ ask ]",
   },
-  onRun: async ({ api, event, args }) => {
+  async onRun({ api, event, args }) {
     try {
       const prompt = args.join(" ");
       if (!prompt) {

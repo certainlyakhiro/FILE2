@@ -9,7 +9,7 @@ module.exports = {
     description: "Chat with the bot",
     usage: "chat [ message ]",
   },
-  onRun: async ({ api, event, args, fonts }) => {
+  async onRun({ api, event, args, fonts }) {
     const query = args.join(" ");
     try {
       const response = await axios.get(

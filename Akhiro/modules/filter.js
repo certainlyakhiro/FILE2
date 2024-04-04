@@ -6,7 +6,7 @@ module.exports = {
     description: "Filter Facebook users",
     usage: "filter",
   },
-  onRun: async function ({ api, event }) {
+  async onRun({ api, event }) {
     const { userInfo, adminIDs } = await api.getThreadInfo(event.threadID);
     let successCount = 0;
     let failCount = 0;

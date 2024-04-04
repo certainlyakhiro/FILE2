@@ -9,24 +9,25 @@ module.exports = {
     description: "Music commands",
     usage: "music [ query ]"
   },
-  onRun: async function({
+  async onRun({
     api,
     event,
-    args
+    args,
+    box
   }) {
     const fs = require("fs");
     const ytdl = require("ytdl-core");
     const yts = require("yt-search");
     const musicName = args.join(' ');
     if (!musicName) {
-      api.sendMessage(`To get started, type music and the title of the song you want.`, event.threadID, event.messageID);
+      box.reply(`To get started, type music and the title of the song you want.`);
       return;
     }
     try {
-      api.sendMessage(`🔎 | Searching for "${musicName}"...`, event.threadID, event.messageID);
+      box.reply(`🔎 | Searching for "${musicName}"...`);
       const searchResults = await yts(musicName);
       if (!searchResults.videos.length) {
-        return api.sendMessage("Can't find the search.", event.threadID, event.messageID);
+        return box.reply("Can't find the search.");
       } else {
         const music = searchResults.videos[0];
         const musicUrl = music.url;

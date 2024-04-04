@@ -23,7 +23,7 @@ module.exports = {
     role: 0,
     hasPrefix: false,
   },
-  onRun: async ({ box, fonts, args }) => {
+  async onRun({ box, fonts, args }) {
     const commands = Object.values(global.Akhiro?.modules || {});
     const botPrefix = global.Akhiro?.botPrefix || "";
 

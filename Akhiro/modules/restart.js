@@ -7,12 +7,9 @@ module.exports = {
     description: "Reboot the bot system",
     usage: "Reboot the bot system",
   },
-  onRun: async ({ api, event, args }) => {
-    await api.sendMessage(
-      "Restarting AkhiroV2 System...",
-      event.threadID,
-      event.messageID,
-    );
+  async onRun({ api, event, args, box }) {
+    await box.reply(
+      "Restarting AkhiroV2 System...");
 
     process.exit(2);
   },

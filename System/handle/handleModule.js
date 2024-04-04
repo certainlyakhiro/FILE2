@@ -1,22 +1,10 @@
 const fonts = require("./createFonts");
 
-function aliases(command) {
-  for (const [moduleNames, module] of Object.entries(global.Akhiro.modules)) {
-    const aliases = moduleNames.split(",");
-    if (
-      aliases.some(
-        (alias) => alias.trim().toLowerCase() === command?.toLowerCase(),
-      )
-    ) {
-      return module;
-    }
-  }
-  return null;
-}
+
 // commenter: rui; message: 😱😲;
 //liane created the noPrefix
 
-module.exports = async function ({ api, event, box }) {
+module.exports = async function ({ api, event, box, aliases }) {
   const { botPrefix, botAdmins } = global.Akhiro.config;
 
   // i updated it uwu ♥️

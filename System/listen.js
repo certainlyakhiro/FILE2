@@ -6,6 +6,21 @@ module.exports = function ({ api, event }) {
   const handleModule = require("./handle/handleModule");
   const handleEvent = require("./handle/handleEvent");
   const handleReply = require("./handle/handleReply");
+
+  //nilipat
+  function aliases(command) {
+  for (const [moduleNames, module] of Object.entries(global.Akhiro.modules)) {
+    const aliases = moduleNames.split(",");
+    if (
+      aliases.some(
+        (alias) => alias.trim().toLowerCase() === command?.toLowerCase(),
+      )
+    ) {
+      return module;
+    }
+  }
+  return null;
+  }
   
 
   // will rework box functions
@@ -23,8 +38,8 @@ module.exports = function ({ api, event }) {
     kick: (uid) => {
       api.removeUserFromGroup(uid, event.threadID);
     },
-    send: (msg) => {
-      api.sendMessage(msg, event.threadID);
+    send: (msg, id) => {
+      api.sendMessage(msg, id || event.threadID);
     },
   };
 
@@ -56,6 +71,7 @@ module.exports = function ({ api, event }) {
     api,
     event,
     box,
+    aliases
   };
 
   switch (event.type) {

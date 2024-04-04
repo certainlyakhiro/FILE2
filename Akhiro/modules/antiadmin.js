@@ -25,7 +25,7 @@ module.exports = {
     description: "Moye moye",
     usage: "antiadmin"
   },
-  onRun: async function({ message, event, threadsData, args }) {
+  async onRun({ box: /*pede*/ message , event, threadsData, args }) {
     if (args[0] === "off") {
       a[event.threadID] = 'off';
       s(a);

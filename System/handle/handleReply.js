@@ -1,21 +1,7 @@
 //liliyan
-function aliases(command) {
-  for (const [moduleNames, module] of Object.entries(global.Akhiro.modules)) {
-    const aliases = moduleNames.split(",");
-    if (
-      aliases.some(
-        (alias) => alias.trim().toLowerCase() === command?.toLowerCase(),
-      )
-    ) {
-      return module;
-    }
-  }
-  return null;
-}
-
 module.exports = async function ({ ...entryObj }) {
   const { replies } = global.Akhiro;
-  const { api, event, box } = entryObj;
+  const { api, event, box, aliases } = entryObj;
   const args = event.body?.split("");
   //check box.reply and box.send on listen.js, it's reworked
   try {

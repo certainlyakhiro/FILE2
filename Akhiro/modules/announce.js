@@ -12,7 +12,7 @@ module.exports = {
     botAdmin: true,
     usage: "announce [ message ]",
   },
-  onRun: async function ({ api, event, args }) {
+  async onRun({ api, event, args }) {
     const threadList = await api.getThreadList(25, null, ["INBOX"]);
     let sentCount = 0;
     const custom = args.join(" ");

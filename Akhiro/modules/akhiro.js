@@ -9,7 +9,7 @@ module.exports = {
     description: "Chat with AI",
     usage: "[ query ]",
   },
-  onRun: async ({ api, event, args }) => {
+  async onRun({ api, event, args }) {
     const query = args.join(" ");
     if (!query) {
       api.sendMessage(
