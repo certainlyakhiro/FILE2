@@ -9,34 +9,35 @@ module.exports = {
     description: "Talk with GPT",
     usage: "[ ask ]",
   },
-  onRun: async ({ api, event, args }) => {
+  async onRun({ api, event, args, commandName, box }) {
     const query = args.join(" ");
     if (!query) {
-      api.sendMessage(
-        "ℹ️ | Please provide a query for GPT.",
-        event.threadID,
-        event.messageID,
+      box.reply(
+        "ℹ️ | Please provide a query for GPT."
       );
       return;
     }
-    api.sendMessage(
-      "⏳ | Generating response, Please wait....",
-      event.threadID,
-      event.messageID,
+    box.reply(
+      "⏳ | Generating response, Please wait...."
     );
     try {
       const gpt = (
         await axios.get(
-          `https://jonellccprojectapis.onrender.com/api/gpt?prompt=${query}`,
+          `https://jonellccprojectapis.onrender.com/api/gpt?prompt=${query}`
         )
       ).data.result.gptResult.gpt;
-      api.sendMessage("👾 | 𝗚𝗣𝗧\n━━━━━━━━━━━━━━━━\n" + gpt, event.threadID);
+      const info = await box.reply(
+        "👾 | 𝗚𝗣𝗧\n━━━━━━━━━━━━━━━━\n" + gpt
+      );
+
+      global.Akhiro.replies.set(info.messageID, commandName); // Fixed syntax: added comma after info.messageID
     } catch (error) {
       console.error("Error:", error);
-      api.sendMessage(
-        "❌ | An error occurred while generating response.",
-        event.threadID,
+      box.reply(
+        "❌ | An error occurred while generating response."
       );
     }
   },
 };
+
+module.exports.onReply = module.exports.onRun;

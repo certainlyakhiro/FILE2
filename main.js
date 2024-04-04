@@ -42,6 +42,9 @@ Object.assign(global.Akhiro, {
   get botAdmins() {
     return global.Akhiro.config.botAdmins;
   },
+  get botName() {
+    return global.Akhiro.config.botName;
+  },
 });
 
 const { config } = global.Akhiro;

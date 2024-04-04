@@ -13,12 +13,10 @@ module.exports = {
     const query = args.join(" ");
     if (!query) {
       api.sendMessage(
-        fonts.sans(
           "ℹ️ | Please provide a query.",
           event.threadID,
           event.messageID,
-        ),
-      );
+        );
       api.setMessageReaction("ℹ️", event.messageID, (err) => {}, true);
       return;
     }

@@ -175,6 +175,7 @@ function buildAPI(globalOptions, html, jar) {
     region,
     firstListen: true,
     // Liane: Basta sa edit message
+    // hi lilililiyan; - Rui 🤷
     wsTaskNumber: 0,
     wsReqNumber: 0
   };

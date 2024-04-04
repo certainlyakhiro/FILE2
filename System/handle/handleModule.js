@@ -81,7 +81,7 @@ ${error.path}`);
       } else if (event.body?.startsWith(botPrefix)) {
         box.reply(
           fonts.sans(
-            `❌ | Command "${command}" doesn't exist, use ${botPrefix}help to view the commands modules.`,
+            `❌ | Command ${command? `"${command}"` : "you are using"} doesn't exist, use ${botPrefix}help to view the commands modules.`,
           ),
         );
       }
