@@ -53,14 +53,17 @@ module.exports = function ({ api, event }) {
   */
   const box = {
     ...boxOld,
-    reply(msg) {
+    reply(msg, x, y) {
+      if (x === event.threadID || y === event.messageID) {
+        throw new Error(`Wag lagyan ng threadID at messageID yung box.reply!`);
+      }
       return new Promise(res => {
         api.sendMessage(msg, event.threadID, (_, info) => res(info), event.messageID);
       });
     },
-    send(msg) {
+    send(msg, goal) {
       return new Promise(res => {
-        api.sendMessage(msg, event.threadID, (_, info) => res(info));
+        api.sendMessage(msg, goal || event.threadID, (_, info) => res(info));
       });
     },
     edit(msg, mid) {

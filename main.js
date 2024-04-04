@@ -82,7 +82,9 @@ async function start() {
 
       login({ appState: state }, (err, api) => {
         if (err) {
-          logger.error("❌ | Error while logging in: " + err);
+          logger.error("❌ | Error while logging in: ");
+          console.log(err);
+          process.exit(1);
         }
 
         api.setOptions({
