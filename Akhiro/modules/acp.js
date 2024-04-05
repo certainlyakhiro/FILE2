@@ -7,7 +7,7 @@ module.exports = {
     botAdmin: true,
     description: "Accepts the request from the user"
   },
-  async onRun({ api, event, text, box }) {
+  async onRun({ api, event, args: text, box }) {
     const moment = require("moment-timezone");
 
     const handleApprove = async (targetUID) => {
