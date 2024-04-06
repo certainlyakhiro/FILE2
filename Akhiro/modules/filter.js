@@ -2,6 +2,7 @@ module.exports = {
   metadata: {
     name: "filter",
     role: 2,
+    botAdmin: true,
     author: "AkhiroDEV | CLIFF",
     description: "Filter Facebook users",
     usage: "filter",

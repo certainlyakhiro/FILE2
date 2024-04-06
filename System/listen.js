@@ -6,6 +6,21 @@ module.exports = function ({ api, event }) {
   const handleModule = require("./handle/handleModule");
   const handleEvent = require("./handle/handleEvent");
   const handleReply = require("./handle/handleReply");
+  // meow
+  const UserInfo = require("../Akhiro/resources/userInfo/utils");
+  const BankHandler = require("../Akhiro/resources/bank/utils");
+  const CurrencyHandler = require("../Akhiro/resources/balance/utils");
+  const userInfos = new UserInfo({
+    filepath: "Akhiro/resources/userInfo/userInfo.json",
+    api
+  });
+  const bankHandler = new BankHandler({
+    filepath: "Akhiro/resources/bank/bank.json"
+  });
+  const currencyHandler = new CurrencyHandler({
+    filepath: "Akhiro/resources/money/currency.json"
+  });
+  
 
   //nilipat
   function aliases(command) {
@@ -74,7 +89,10 @@ module.exports = function ({ api, event }) {
     api,
     event,
     box,
-    aliases
+    aliases,
+    userInfos,
+    bankHandler,
+    currencyHandler
   };
 
   switch (event.type) {
