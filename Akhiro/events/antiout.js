@@ -3,14 +3,11 @@ module.exports = {
     name: "antiout",
     version: "1.0.0",
   },
-  async onEvent({ event, api }) {
+  async onEvent({ event, api, userInfos }) {
     if (event.logMessageData?.leftParticipantFbId === api.getCurrentUserID())
       return;
-    if (event.logMessageData?.leftParticipantFbId) {
-      const info = await api.getUserInfo(
-        event.logMessageData?.leftParticipantFbId,
-      );
-      const { name } = info[event.logMessageData?.leftParticipantFbId];
+    if (event.logMessageData?.leftParticipantFbId && !event.logMessageBody?.includes("removed")) {
+      const { name } = await userInfos.get(event.logMessageData?.leftParticipantFbId);
       api.addUserToGroup(
         event.logMessageData?.leftParticipantFbId,
         event.threadID,

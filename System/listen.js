@@ -12,31 +12,29 @@ module.exports = function ({ api, event }) {
   const CurrencyHandler = require("../Akhiro/resources/balance/utils");
   const userInfos = new UserInfo({
     filepath: "Akhiro/resources/userInfo/userInfo.json",
-    api
+    api,
   });
   const bankHandler = new BankHandler({
-    filepath: "Akhiro/resources/bank/bank.json"
+    filepath: "Akhiro/resources/bank/bank.json",
   });
   const currencyHandler = new CurrencyHandler({
-    filepath: "Akhiro/resources/money/currency.json"
+    filepath: "Akhiro/resources/money/currency.json",
   });
-  
 
   //nilipat
   function aliases(command) {
-  for (const [moduleNames, module] of Object.entries(global.Akhiro.modules)) {
-    const aliases = moduleNames.split(",");
-    if (
-      aliases.some(
-        (alias) => alias.trim().toLowerCase() === command?.toLowerCase(),
-      )
-    ) {
-      return module;
+    for (const [moduleNames, module] of Object.entries(global.Akhiro.modules)) {
+      const aliases = moduleNames.split(",");
+      if (
+        aliases.some(
+          (alias) => alias.trim().toLowerCase() === command?.toLowerCase(),
+        )
+      ) {
+        return module;
+      }
     }
+    return null;
   }
-  return null;
-  }
-  
 
   // will rework box functions
   //---lia
@@ -72,19 +70,67 @@ module.exports = function ({ api, event }) {
       if (x === event.threadID || y === event.messageID) {
         throw new Error(`Wag lagyan ng threadID at messageID yung box.reply!`);
       }
-      return new Promise(res => {
-        api.sendMessage(msg, event.threadID, (_, info) => res(info), event.messageID);
+      return new Promise((res) => {
+        api.sendMessage(
+          msg,
+          event.threadID,
+          (_, info) => res(info),
+          event.messageID,
+        );
       });
     },
     send(msg, goal) {
-      return new Promise(res => {
+      return new Promise((res) => {
         api.sendMessage(msg, goal || event.threadID, (_, info) => res(info));
       });
     },
     edit(msg, mid) {
-      return new Promise(res => api.editMessage(msg, mid, () => res(true)));
+      return new Promise((res) => api.editMessage(msg, mid, () => res(true)));
+    },
+    reactions: global.Akhiro.reactions
+  };
+  if (event.type == "message_reaction" && box.reactions[event.messageID]) {
+    console.log(`Detected Reaction at ${event.messageID}`);
+    const { resolve, reject, event: i, author, next } = box.reactions[event.messageID];
+    try {
+      if (author === event.userID) {
+        console.log(`${event.reaction} Resolved Reaction at ${event.messageID}`);
+        delete box.reactions[event.messageID];
+        if (next) {
+          box.edit(next, i.messageID);
+        }
+    
+        resolve?.(event);
+      } else {
+        console.log(`${event.reaction} Pending Reaction at ${event.messageID} as author jot reacted`);
+    
+      }
+    } catch (err) {
+      console.log(err);
+      reject?.(err);
+    } finally {
     }
   }
+  function waitForReaction(body, next = "") {
+    return new Promise(async (resolve, reject) => {
+      const i = await box.reply(body);
+      box.reactions[i.messageID] = {
+        resolve,
+        reject,
+        event: i,
+        next,
+        author: event.senderID
+      };
+      console.log(`New pending reaction at: `, i, box.reactions);
+    });
+  }
+
+/*
+const info = await box.waitForReaction("React an emoji");
+
+box.reply(`You reacted "${info.reaction}" to my message`);
+*/
+  box.waitForReaction = waitForReaction;
   const entryObj = {
     api,
     event,
@@ -92,8 +138,9 @@ module.exports = function ({ api, event }) {
     aliases,
     userInfos,
     bankHandler,
-    currencyHandler
+    currencyHandler,
   };
+  console.log({ ...event, participantIDs: {} });
 
   switch (event.type) {
     case "message":

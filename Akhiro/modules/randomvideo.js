@@ -21,10 +21,11 @@ module.exports = {
         `Invalid category. Available categories:  ${categories.join(", ")}`,
       );
     }
+    await box.waitForReaction("Please react to this message to confirm.", "Searching video for you!");
     try {
       box.react("⏳");
       const response = await axios.get(
-        `https://a-k-h-i-r-o-randomvideo-api.onrender.com/randomVideo?key=AkhiroAPI&category=${encodeURIComponent(category)}`,
+        `http://fi3.bot-hosting.net:22206/randomVideo?key=AkhiroAPI&category=${encodeURIComponent(category)}`,
       );
 
       if (/*response.data.code === 200  puta ano to*/ true) {
