@@ -6,7 +6,7 @@ module.exports = function ({ api, event }) {
   const handleModule = require("./handle/handleModule");
   const handleEvent = require("./handle/handleEvent");
   const handleReply = require("./handle/handleReply");
-  // meow
+  // for (const liane in drugs)
   const UserInfo = require("../Akhiro/resources/userInfo/utils");
   const BankHandler = require("../Akhiro/resources/bank/utils");
   const CurrencyHandler = require("../Akhiro/resources/balance/utils");
@@ -20,6 +20,10 @@ module.exports = function ({ api, event }) {
   const currencyHandler = new CurrencyHandler({
     filepath: "Akhiro/resources/money/currency.json",
   });
+  const threadConfig = new CurrencyHandler({
+    filepath: "Akhiro/resources/money/threadConfig.json",
+  });
+  
 
   //nilipat
   function aliases(command) {
@@ -139,6 +143,7 @@ box.reply(`You reacted "${info.reaction}" to my message`);
     userInfos,
     bankHandler,
     currencyHandler,
+    threadConfig
   };
   console.log({ ...event, participantIDs: {} });
 

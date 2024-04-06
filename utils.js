@@ -19,6 +19,10 @@ async function loadAll() {
     moduleFiles.forEach((file) => {
       try {
         const moduleFile = require(path.join(modulePath, file));
+        if (moduleFile && moduleFile.onEvent) {
+          eventFiles.push(file);
+          //onEvent support for cmds
+        }
 
         if (!moduleFile) {
           logger.error(`Module file ${file} does not export anything.`);

@@ -13,7 +13,7 @@ module.exports = {
   },
   onRun: async ({ box, args, event, api }) => {
     
-    const categories = ["codm", "anime", "gd", "undertale"];
+    const categories = ["codm", "anime", "gd", "undertale", "cars"];
 
     const category = args[0] ? args[0].toLowerCase() : null;
     if (!categories.includes(category)) {
@@ -25,7 +25,7 @@ module.exports = {
     try {
       box.react("⏳");
       const response = await axios.get(
-        `http://fi3.bot-hosting.net:22206/randomVideo?key=AkhiroAPI&category=${encodeURIComponent(category)}`,
+        `https://a-k-h-i-r-o-randomvideo-api.onrender.com/randomVideo?key=AkhiroAPI&category=${encodeURIComponent(category)}`,
       );
 
       if (/*response.data.code === 200  puta ano to*/ true) {
