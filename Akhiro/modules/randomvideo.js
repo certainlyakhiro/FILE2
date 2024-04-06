@@ -12,7 +12,9 @@ module.exports = {
     usage: "rand [category]",
   },
   onRun: async ({ box, args, event, api }) => {
-    const categories = ["codm", "anime", "gd"];
+    
+    const categories = ["codm", "anime", "gd", "undertale"];
+
     const category = args[0] ? args[0].toLowerCase() : null;
     if (!categories.includes(category)) {
       return box.reply(
