@@ -48,7 +48,7 @@ module.exports = async function ({ api, event, box, aliases, ...etc }) {
             //liane: if no prefix, and module.metadata.hasPrefix is not false, do nothing
             return box.reply(fonts.sans(`❌ | This command needs a prefix.`));
           } else if (
-            module.metadata?.hasPrefix === false && module.metadata.bypassHasPrefixRestriction &&
+            module.metadata?.hasPrefix === false && !module.metadata.bypassHasPrefixRestriction &&
             event.body?.toLowerCase().startsWith(botPrefix)
           ) {
             return box.reply(

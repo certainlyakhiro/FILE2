@@ -55,8 +55,6 @@ module.exports = {
       if (failed.length > 0) {
         box.reply(
           `Failed to approve friend request for UID ${failed.join(", ")}`,
-          event.threadID,
-          event.messageID
         );
       }
       return;
@@ -88,19 +86,14 @@ module.exports = {
               .format("DD/MM/YYYY HH:mm:ss")}\n`;
         }
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        await box.edit("Processing");
+        const foo = await box.reply("Processing");
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        await box.reply(
-          `${msg}\nApprove friend request using UID: acc approve <UID>`,
-          event.threadID,
-          event.messageID
-        );
+        await box.edit(
+          `${msg}\nApprove friend request using UID: acc approve <UID>`, foo.messageID);
       } catch (error) {
-        console.error("Error fetching friend requests:", error);
+        console.error(`Error fetching friend requests: ${error.message}`, error);
         box.reply(
-          "Failed to fetch friend requests. Please try again later.",
-          event.threadID,
-          event.messageID
+          `Failed to fetch friend requests. Please try again later. ${error.message}`,
         );
       }
       return;
@@ -108,8 +101,6 @@ module.exports = {
 
     box.reply(
       `Invalid command. Use: acc approve <UID> or acc list to view pending friend requests.`,
-      event.threadID,
-      event.messageID
     );
   },
 };

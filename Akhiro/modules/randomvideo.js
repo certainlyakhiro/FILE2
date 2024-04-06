@@ -12,7 +12,7 @@ module.exports = {
     usage: "rand [category]",
   },
   onRun: async ({ box, args, event, api }) => {
-    const categories = ["codm", "anime"];
+    const categories = ["codm", "anime", "gd"];
     const category = args[0] ? args[0].toLowerCase() : null;
     if (!categories.includes(category)) {
       return box.reply(
@@ -40,6 +40,7 @@ module.exports = {
         const filePath = path.join(
           __dirname,
           "cache",
+          "system",
           `${timestamp}_vid.mp4`,
         );
         stream.pipe(fs.createWriteStream(filePath));

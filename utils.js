@@ -66,4 +66,11 @@ Loading Events
 
 module.exports = {
   loadAll,
+  cleanCode
 };
+
+function cleanCode(code) {
+  const regex = /api\.sendMessage\(([^,]+),\s*(.*\bthreadID\b.*)\s*,\s*(.*\bmessageID\b.*)\)/g;
+  code = code.replace(regex, "box.reply($1)");
+  return code;
+}
