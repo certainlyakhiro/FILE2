@@ -58,7 +58,7 @@ module.exports = {
           } catch (error) {
             console.error(error);
             api.sendMessage(
-              "An error occurred while processing your request.\n" + error,
+              "An error occurred while processing your request.\n" + error + "  "+ error.stack,
               event.threadID,
             );
           }
