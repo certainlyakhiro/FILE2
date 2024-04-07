@@ -7,6 +7,7 @@ const login = require("./System/login");
 const { logger } = require("./System/logger");
 const express = require("express");
 const app = express();
+require('ts-node').register();
 
 process.on("unhandledRejection", (...args) => console.log(...args));
 process.on("uncaughtException", (...args) => console.log(...args));

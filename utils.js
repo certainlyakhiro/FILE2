@@ -12,10 +12,10 @@ async function loadAll() {
     Object.keys(require.cache).forEach((key) => delete require.cache[key]); //lia
     const moduleFiles = fs
       .readdirSync(modulePath)
-      .filter((file) => file.endsWith(".js")).map(i => `${modulePath}/${i}`);
+      .filter((file) => file.endsWith(".js") || file.endsWith(".ts")).map(i => `${modulePath}/${i}`);
     const eventFiles = fs
       .readdirSync(eventsPath)
-      .filter((file) => file.endsWith(".js")).map(i => `${eventsPath}/${i}`);
+      .filter((file) => file.endsWith(".js") || || file.endsWith(".ts")).map(i => `${eventsPath}/${i}`);
 
     moduleFiles.forEach((file) => {
       try {
