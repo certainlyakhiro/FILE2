@@ -15,7 +15,7 @@ async function loadAll() {
       .filter((file) => file.endsWith(".js") || file.endsWith(".ts")).map(i => `${modulePath}/${i}`);
     const eventFiles = fs
       .readdirSync(eventsPath)
-      .filter((file) => file.endsWith(".js") || || file.endsWith(".ts")).map(i => `${eventsPath}/${i}`);
+      .filter((file) => file.endsWith(".js") || file.endsWith(".ts")).map(i => `${eventsPath}/${i}`);
 
     moduleFiles.forEach((file) => {
       try {
