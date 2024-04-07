@@ -9,11 +9,7 @@ module.exports = {
   },
   async onRun({ api, event, args, box }) {
     const { loadAll } = global.Akhiro.utils;
-    try {
-      await loadAll();
-    } catch (err) {
-      return api.sendMessage(`Error: ${err}`, event.threadID, event.messageID);
-    }
+    const errs = await loadAll();
     const system = `⚙️ 𝗦𝗬𝗦𝗧𝗘𝗠
 ━━━━━━━━━━━━━━━`;
     //work smart, not work hard.
@@ -22,6 +18,17 @@ module.exports = {
     await new Promise(r => setTimeout(r, 1000));
     await box.edit(`${system}
 🔃 | Reloading the latest edited codes.`, i.messageID);
+    let res = `${system}
+❌ | Failed to reload ${Object.keys(errs).length} modules:\n\n`;
+    await new Promise(r => setTimeout(r, 1000));
+    let num = 1;
+    if (errs) {
+      for (const [ file, error ] of Object.entries(errs)) {
+        res += `${num}. ${file}\n--> ${error}\n`;
+        num++;
+      }
+      return await box.edit(res, i.messageID);
+    }
     await new Promise(r => setTimeout(r, 1000));
     await box.edit(`${system}
 📥 | Updating the system..`, i.messageID);

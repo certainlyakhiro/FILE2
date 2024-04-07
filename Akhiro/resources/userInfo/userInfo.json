@@ -49,5 +49,38 @@
       "Loyd"
     ],
     "alternateName": "秋浩"
+  },
+  "100092538211430": {
+    "name": "Althea Marie Juit",
+    "firstName": "Althea Marie",
+    "vanity": "",
+    "thumbSrc": "https://scontent.fbom44-1.fna.fbcdn.net/v/t39.30808-1/435108114_328394690255136_8536875954951895956_n.jpg?stp=cp0_dst-jpg_p32x32&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE48mlKJX0sjQXo-MvtKC_-irnx5blNKR-KufHluU0pH0FACUfP84QbMV5PgKa8Y6zLcJDOslEgYLl8XASGeAfX&_nc_ohc=rVThxdalRysAb752OQe&_nc_ht=scontent.fbom44-1.fna&oh=00_AfCzGgLb782E03Yw1Uzdn2pLWvqvku50Pb5Y1qTIivuIXQ&oe=661727D3",
+    "profileUrl": "https://www.facebook.com/profile.php?id=100092538211430",
+    "gender": 1,
+    "type": "user",
+    "isFriend": false,
+    "isBirthday": false,
+    "searchTokens": [
+      "Juit",
+      "Althea",
+      "Marie"
+    ],
+    "alternateName": ""
+  },
+  "61550295470852": {
+    "name": "ROMEO BOT",
+    "firstName": "ROMEO",
+    "vanity": "",
+    "thumbSrc": "https://scontent.fmaa10-1.fna.fbcdn.net/v/t39.30808-1/432584416_122173835708009849_7567467669734175150_n.jpg?stp=cp0_dst-jpg_p32x32&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHu3SqdWMYLG2Mqilfk97MSB6rzzJZEPd8HqvPMlkQ930VBPjIlkJTsv8IExQyYK7Es0Lz3KzTkFXbSsfy_gxvp&_nc_ohc=CqZMZ4Tto1UAb53f7JJ&_nc_ht=scontent.fmaa10-1.fna&oh=00_AfDsaTMmHNoZMMz_B72OlHKj2MhMydKQ9NxItmDToOROtQ&oe=661729AC",
+    "profileUrl": "https://www.facebook.com/profile.php?id=61550295470852",
+    "gender": 2,
+    "type": "user",
+    "isFriend": false,
+    "isBirthday": false,
+    "searchTokens": [
+      "BOT",
+      "ROMEO"
+    ],
+    "alternateName": ""
   }
 }

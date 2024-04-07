@@ -3,6 +3,7 @@ const path = require("path");
 const { logger } = require("./System/logger");
 
 async function loadAll() {
+  const errs = {};
   const modulePath = path.join(__dirname, "Akhiro", "modules");
   const eventsPath = path.join(__dirname, "Akhiro", "events");
 
@@ -11,14 +12,14 @@ async function loadAll() {
     Object.keys(require.cache).forEach((key) => delete require.cache[key]); //lia
     const moduleFiles = fs
       .readdirSync(modulePath)
-      .filter((file) => file.endsWith(".js"));
+      .filter((file) => file.endsWith(".js")).map(i => `${modulePath}/${i}`);
     const eventFiles = fs
       .readdirSync(eventsPath)
-      .filter((file) => file.endsWith(".js"));
+      .filter((file) => file.endsWith(".js")).map(i => `${eventsPath}/${i}`);
 
     moduleFiles.forEach((file) => {
       try {
-        const moduleFile = require(path.join(modulePath, file));
+        const moduleFile = require(file);
         if (moduleFile && moduleFile.onEvent) {
           eventFiles.push(file);
           //onEvent support for cmds
@@ -38,6 +39,7 @@ async function loadAll() {
         }
       } catch (error) {
         logger.error(`Error loading module from file ${file}: ${error}`);
+        errs[file] = error;
       }
     });
     console.log(`
@@ -46,7 +48,7 @@ Loading Events
 
     eventFiles.forEach((file) => {
       try {
-        const eventFile = require(path.join(eventsPath, file));
+        const eventFile = require(file);
         if (!eventFile) {
           logger.error(`Event file ${file} does not export anything.`);
         } else if (!eventFile.metadata) {
@@ -65,7 +67,9 @@ Loading Events
     });
   } catch (error) {
     logger.error(`Error reading module directory: ${error}`);
+    errs[file] = error;
   }
+  return Object.keys(errs).length === 0 ? false : errs;
 }
 
 module.exports = {
