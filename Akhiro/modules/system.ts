@@ -21,8 +21,7 @@ export async function onRun({ api, event, args, box }: { api: any, event: any, a
   const { loadAll }: { loadAll: () => Promise<Errors | boolean> } = global.Akhiro.utils;
 
   async function handleLoad(): Promise<boolean> {
-    const errs: Errors | boolean = await loadAll();
-
+    
     const i: any = await box.reply(`${system}
 ⚙️ | Getting started..`);
     await new Promise<void>((r) => setTimeout(r, 1000));
@@ -31,6 +30,7 @@ export async function onRun({ api, event, args, box }: { api: any, event: any, a
 🔃 | Reloading the latest edited codes.`,
       i.messageID,
     );
+    const errs: Errors | boolean = await loadAll();
 
     let res: string = `${system}
 ❌ | Failed to reload ${errs && typeof errs === 'object' ? Object.keys(errs).length : 0} modules:\n\n`;
@@ -75,7 +75,7 @@ export async function onRun({ api, event, args, box }: { api: any, event: any, a
     }
 
     const fileName: string = args[1];
-    const filePath: string = `./${fileName}`;
+    const filePath: string = `Akhiro/modules/${fileName}`;
 
     if (fs.existsSync(filePath)) {
       await box.waitForReaction(

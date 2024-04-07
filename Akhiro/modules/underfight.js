@@ -2,7 +2,7 @@ module.exports.metadata = {
   name: "underfight",
   role: 0,
   hasPrefix: false,
-  author: "Liane",
+  author: "Liane Cagara",
   description: "Simple Undertale-based rpg",
   usage: "no args",
   bypassHasPrefixRestriction: true
