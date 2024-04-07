@@ -1,4 +1,6 @@
 const fonts = require("./createFonts");
+const { styled } = require("./styler");
+  
 
 // commenter: rui; message: 😱😲;
 //liane created the noPrefix
@@ -29,6 +31,14 @@ module.exports = async function ({ api, event, box, aliases, ...etc }) {
       const module = aliases(moduleName);
       if (module) {
         try {
+          async function sendStyled(text) {
+            if (!module.style) {
+              throw new Error("Module does not have a 'styled' property.");
+            }
+            const text2 = await styled(text, module.style);
+            return await box.reply(text2);
+          }
+          
           // uwu
           if (
             !botAdmins?.includes(event.senderID) &&
@@ -67,6 +77,7 @@ module.exports = async function ({ api, event, box, aliases, ...etc }) {
             box,
             fonts,
             commandName: moduleName,
+            sendStyled,
             ...etc
           });
         } catch (error) {
