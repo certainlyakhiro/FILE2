@@ -9,6 +9,7 @@ module.exports = {
     name: "playlyrics",
     role: 0,
     author: "AkhiroDEV | Eugene",
+    hasPrefix: false,
     description: "Plays a song with lyrics",
     usage: "playlyrics [ song name ]"
   },

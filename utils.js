@@ -19,18 +19,22 @@ async function loadAll() {
 
     moduleFiles.forEach((file) => {
       try {
-        const moduleFile = require(file);
-        if (moduleFile && moduleFile.onEvent) {
+        let moduleFile = require(file);
+        if (moduleFile && (moduleFile.onEvent || moduleFile?.default?.onEvent)) {
           eventFiles.push(file);
           //onEvent support for cmds
         }
+        if (moduleFile && moduleFile.default) {
+          moduleFile = moduleFile.default;
+          //for esm
+        }
 
         if (!moduleFile) {
-          logger.error(`Module file ${file} does not export anything.`);
+          throw new Error(`Module file ${file} does not export anything.`);
         } else if (!moduleFile.metadata) {
-          logger.error(`Metadata is not defined in module file: ${file}`);
+          throw new Error(`Metadata is not defined in module file: ${file}`);
         } else if (typeof moduleFile.onRun !== "function") {
-          logger.error(`onRun is not defined in module file: ${file}`);
+          throw new Error(`onRun is not defined in module file: ${file}`);
         } else {
           global.Akhiro.modules[moduleFile.metadata.name] = moduleFile;
           logger.info(
@@ -48,13 +52,18 @@ Loading Events
 
     eventFiles.forEach((file) => {
       try {
-        const eventFile = require(file);
+        let eventFile = require(file);
+        if (eventFile && eventFile.default) {
+          eventFile = eventFile.default;
+          //for esm
+        }
+        
         if (!eventFile) {
-          logger.error(`Event file ${file} does not export anything.`);
+          throw new Error(`Event file ${file} does not export anything.`);
         } else if (!eventFile.metadata) {
-          logger.error(`Metadata is not defined in module file: ${file}`);
+          throw new Error(`Metadata is not defined in module file: ${file}`);
         } else if (typeof eventFile.onEvent !== "function") {
-          logger.error(`onEvent is not defined in module file: ${file}`);
+          throw new Error(`onEvent is not defined in module file: ${file}`);
         } else {
           //pano mag map
           global.Akhiro.events?.set(eventFile.metadata.name, eventFile);
@@ -82,3 +91,20 @@ function cleanCode(code) {
   code = code.replace(regex, "box.reply($1)");
   return code;
 }
+global.utils = new Proxy({
+  cleanCode,
+  loadAll
+}, {
+  get(target, prop) {
+    if (!(prop in target)) {
+      throw new Error(`The global.utils.${prop} is not available in utils of Akhiro Bot!`);
+    }
+    return target[prop];
+  },
+  set(target, prop, value) {
+    if (prop in target) {
+      throw new Error(`You are not allowed to override the global.utils.${prop} of Akhiro Bot!`);
+    }
+    target[prop] = value;
+  }
+})

@@ -18,10 +18,10 @@ module.exports = function ({ api, event }) {
     filepath: "Akhiro/resources/bank/bank.json",
   });
   const currencyHandler = new CurrencyHandler({
-    filepath: "Akhiro/resources/money/currency.json",
+    filepath: "Akhiro/resources/balance/currency.json",
   });
   const threadConfig = new CurrencyHandler({
-    filepath: "Akhiro/resources/money/threadConfig.json",
+    filepath: "Akhiro/resources/balance/threadConfig.json",
   });
   
 

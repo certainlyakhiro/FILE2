@@ -2,7 +2,7 @@ module.exports = {
   metadata: {
     name: "acp",
     role: 2,
-    author: "AkhiroDEV",
+    author: "AkhiroDEV | LiANE",
     hasPrefix: false,
     botAdmin: true,
     description: "Accepts the request from the user"
@@ -86,14 +86,19 @@ module.exports = {
               .format("DD/MM/YYYY HH:mm:ss")}\n`;
         }
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        const foo = await box.reply("Processing");
+        await box.edit("Processing");
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        await box.edit(
-          `${msg}\nApprove friend request using UID: acc approve <UID>`, foo.messageID);
+        await box.reply(
+          `${msg}\nApprove friend request using UID: acc approve <UID>`,
+          event.threadID,
+          event.messageID
+        );
       } catch (error) {
-        console.error(`Error fetching friend requests: ${error.message}`, error);
+        console.error("Error fetching friend requests:", error);
         box.reply(
-          `Failed to fetch friend requests. Please try again later. ${error.message}`,
+          "Failed to fetch friend requests. Please try again later.",
+          event.threadID,
+          event.messageID
         );
       }
       return;
@@ -101,6 +106,8 @@ module.exports = {
 
     box.reply(
       `Invalid command. Use: acc approve <UID> or acc list to view pending friend requests.`,
+      event.threadID,
+      event.messageID
     );
   },
 };

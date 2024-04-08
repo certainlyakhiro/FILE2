@@ -36,7 +36,7 @@ export async function onRun({ api, event, args, box }: { api: any, event: any, a
 ❌ | Failed to reload ${errs && typeof errs === 'object' ? Object.keys(errs).length : 0} modules:\n\n`;
     await new Promise<void>((r) => setTimeout(r, 1000));
     let num: number = 1;
-    if (errs && typeof errs === 'object') {
+    if (errs) {
       for (const [file, error] of Object.entries(errs)) {
         res += `${num}. ${file}\n--> ${error.message}\n`;
         num++;

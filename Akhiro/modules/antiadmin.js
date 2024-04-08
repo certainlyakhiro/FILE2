@@ -1,21 +1,4 @@
-const fs = require('fs');
-
-function l() {
-  try {
-    const d = fs.readFileSync("admin.json", "utf8");
-    return JSON.parse(d);
-  } catch (e) {
-    return {};
-  }
-}
-
-function s(s) {
-  fs.writeFileSync("admin.json", JSON.stringify(s, null, 2));
-}
-
-let a = l();
-
-module.exports = {
+export default {
   metadata: {
     name: "antiadmin",
     role: 1,
@@ -25,22 +8,27 @@ module.exports = {
     description: "Moye moye",
     usage: "antiadmin"
   },
-  async onRun({ box: /*pede*/ message , event, threadsData, args }) {
+  async onRun({ box: /*pede*/ message , event, threadConfig, args }) {
     if (args[0] === "off") {
-      a[event.threadID] = 'off';
-      s(a);
+      threadConfig.setInfo(event.threadID, {
+        antiAdmin: "off"
+      });
       return message.reply(`Disabled.`);
     } else if (args[0] === "on") {
-      delete a[event.threadID];
-      s(a);
+      threadConfig.setInfo(event.threadID, {
+        antiAdmin: "on"
+      });
       return message.reply(`Enabled.`);
     } else {
-      return message.reply(`Usage: {pn} off to turn off`);
+      const { antiAdmin = 'off' } = await threadConfig.getInfo(event.threadID);
+      return message.reply(`Status: ${antiAdmin}
+Usage: {pn} off to turn off`);
     }
   },
 
-  onEvent: async function({ api, event, threadsData }) {
-    if (a[event.threadID] === 'off' || !event.logMessageData || event.logMessageData.ADMIN_EVENT !== "remove_admin") {
+  async onEvent({ api, event, threadConfig }) {
+    const { antiAdmin = 'off' } = await threadConfig.getInfo(event.threadID);
+    if (antiAdmin !== 'on' || !event.logMessageData || event.logMessageData.ADMIN_EVENT !== "remove_admin") {
       return;
     }
 

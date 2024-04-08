@@ -10,6 +10,7 @@
     "autoMarkDelivery": false,
     "autoMarkRead": false
   },
-  "botPrefix": "/",
+  "botName": "Bot",
+  "botPrefix": "$",
   "botAdmins": ["61554222594723", "100054298824923", "100075058221244"]
 }
