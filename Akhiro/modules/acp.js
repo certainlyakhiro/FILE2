@@ -90,15 +90,11 @@ module.exports = {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         await box.reply(
           `${msg}\nApprove friend request using UID: acc approve <UID>`,
-          event.threadID,
-          event.messageID
         );
       } catch (error) {
         console.error("Error fetching friend requests:", error);
         box.reply(
           "Failed to fetch friend requests. Please try again later.",
-          event.threadID,
-          event.messageID
         );
       }
       return;
@@ -106,8 +102,6 @@ module.exports = {
 
     box.reply(
       `Invalid command. Use: acc approve <UID> or acc list to view pending friend requests.`,
-      event.threadID,
-      event.messageID
     );
   },
 };

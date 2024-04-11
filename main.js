@@ -2,6 +2,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const figlet = require("figlet");
 const chalk = require("chalk");
+const gradient = require("gradient-string");
 const login = require("./System/login");
 /*const config = require("./config.json");*/
 const { logger } = require("./System/logger");
@@ -82,6 +83,11 @@ async function start() {
 
       await utils.loadAll();
 
+      console.log();
+      console.log(gradient.retro("AkhiroBOT System Information"));
+      console.log(gradient.retro("> Name: " + global.Akhiro.botName));
+      console.log(gradient.retro("> Developed by: Akhiro Rui and Liane"));
+      console.log(gradient.retro('> Time: [ ' + new Date().toLocaleTimeString() + ' ]'));
       login({ appState: state }, (err, api) => {
         if (err) {
           logger.error("❌ | Error while logging in: ");

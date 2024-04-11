@@ -1,6 +1,10 @@
 <h1>🤖 | YSD: AkhiroBot<sub><sub><sub><sub><h6>- By Francis Raval & Rui Reogo & LiANE</h6></sub></sub></sub>
 Introduction</h1>
 
+******Join us on AkhiroBOT Community******
+
+• If you have encountered some error's in our upgraded botfile. You can join our group on Facebook, Just search the name AkhiroBOT Community to be stay tuned to our future updates on AkhiroBOT
+
 <img align="center" src="https://i.postimg.cc/J4StDcpg/lv-0-20240217160135-ezgif-com-video-to-gif-converter.gif"/>
 
 <h1>📦 | WHAT'S NEW?</h1>
@@ -17,4 +21,4 @@ Introduction</h1>
 
 • This file that we made comes with new features for a faster response and also for better and smoother running system, this commands may not be many but we assure you that we will add more commands from our own API.
 
-• This file we made is not for sale, so if found this file, I may not recommend to sell it and owned like you make this Project AI
+• This file we made is not for sale, so if found this file, I may not recommend to sell it and owned like you make this Project AI, Because creating a botfile is not easy as you think. So please ask permission first to the developers of AkhiroBOTv2 to be avoided in being banned from the system.

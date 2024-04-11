@@ -17,7 +17,7 @@ module.exports = {
         api.setMessageReaction("❌", event.messageID, (err) => {}, true);
         return;
       }
-      api.sendMessageReaction("⏳", event.messageID, (err) => {}, true);
+      api.setMessageReaction("⏳", event.messageID, (err) => {}, true);
       api.sendMessage(
         "💭 | Thinking for response, please wait...",
         event.threadID,

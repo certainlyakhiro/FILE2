@@ -17,6 +17,7 @@
     "express": "^4.19.2",
     "figlet": "^1.7.0",
     "fs-extra": "^11.2.0",
+    "gradient-string": "^2.0.2",
     "https-proxy-agent": "4.0.0",
     "moment-timezone": "^0.5.45",
     "mqtt": "3.0.0",
