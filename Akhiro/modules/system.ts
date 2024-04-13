@@ -172,7 +172,8 @@ Url: ${rawPaste}`);
 reload
 install <filename> <link|code>
 file <filename>
-delete <filename>`);
+delete <filename>
+bin <filename>`);
     return false;
   }
 }

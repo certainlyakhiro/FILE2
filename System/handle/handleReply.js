@@ -8,8 +8,21 @@ module.exports = async function ({ ...entryObj }) {
     const { messageReply: replier = {} } = event;
     if (replies.has(replier.messageID)) {
       const { commandName, ...repObj } = replies.get(replier.messageID);
-      const { onReply = () => {} } = aliases(commandName) || {};
-      await onReply({ ...entryObj, Reply: repObj, args });
+      const { onReply = () => {}, style } = aliases(commandName) || {};
+      async function sendStyled(text) {
+        if (!style) {
+          throw new Error("Module does not have a 'styled' property.");
+        }
+        const text2 = await styled(text, style);
+        return await box.reply(text2);
+      }
+      await onReply({
+        ...entryObj,
+        Reply: repObj,
+        args,
+        commandName,
+        sendStyled,
+      });
       // onReply? Lol goatbot will sue us
       // you need to use global.Akhiro.replies.set(key, value);
       /*

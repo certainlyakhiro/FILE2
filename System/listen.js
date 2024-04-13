@@ -4,6 +4,7 @@
 module.exports = function ({ api, event }) {
   const { logger } = require("./logger");
   const handleModule = require("./handle/handleModule");
+  const fonts = require("./handle/createFonts");
   const handleEvent = require("./handle/handleEvent");
   const handleReply = require("./handle/handleReply");
   // for (const liane in drugs)
@@ -23,7 +24,6 @@ module.exports = function ({ api, event }) {
   const threadConfig = new CurrencyHandler({
     filepath: "Akhiro/resources/balance/threadConfig.json",
   });
-  
 
   //nilipat
   function aliases(command) {
@@ -91,23 +91,32 @@ module.exports = function ({ api, event }) {
     edit(msg, mid) {
       return new Promise((res) => api.editMessage(msg, mid, () => res(true)));
     },
-    reactions: global.Akhiro.reactions
+    reactions: global.Akhiro.reactions,
   };
   if (event.type == "message_reaction" && box.reactions[event.messageID]) {
     console.log(`Detected Reaction at ${event.messageID}`);
-    const { resolve, reject, event: i, author, next } = box.reactions[event.messageID];
+    const {
+      resolve,
+      reject,
+      event: i,
+      author,
+      next,
+    } = box.reactions[event.messageID];
     try {
       if (author === event.userID) {
-        console.log(`${event.reaction} Resolved Reaction at ${event.messageID}`);
+        console.log(
+          `${event.reaction} Resolved Reaction at ${event.messageID}`,
+        );
         delete box.reactions[event.messageID];
         if (next) {
           box.edit(next, i.messageID);
         }
-    
+
         resolve?.(event);
       } else {
-        console.log(`${event.reaction} Pending Reaction at ${event.messageID} as author jot reacted`);
-    
+        console.log(
+          `${event.reaction} Pending Reaction at ${event.messageID} as author jot reacted`,
+        );
       }
     } catch (err) {
       console.log(err);
@@ -123,13 +132,13 @@ module.exports = function ({ api, event }) {
         reject,
         event: i,
         next,
-        author: event.senderID
+        author: event.senderID,
       };
       console.log(`New pending reaction at: `, i, box.reactions);
     });
   }
 
-/*
+  /*
 const info = await box.waitForReaction("React an emoji");
 
 box.reply(`You reacted "${info.reaction}" to my message`);
@@ -143,7 +152,8 @@ box.reply(`You reacted "${info.reaction}" to my message`);
     userInfos,
     bankHandler,
     currencyHandler,
-    threadConfig
+    threadConfig,
+    fonts,
   };
   console.log({ ...event, participantIDs: {} });
 
