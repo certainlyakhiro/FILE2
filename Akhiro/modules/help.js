@@ -48,7 +48,7 @@ module.exports = {
       const commandName = args[0].toLowerCase();
       const targetCommand = aliases(commandName);
       if (targetCommand) {
-        const { name, description, usage, hasPrefix } = targetCommand.metadata;
+        const { name, description, usage, hasPrefix, author } = targetCommand.metadata;
         const formattedUsage = usage
           ? usage.replace("[command]", `${botPrefix}${name}`)
           : "";
@@ -62,7 +62,7 @@ module.exports = {
 │ ${description}
 │ 𝗨𝘀𝗮𝗴𝗲: ${formattedUsage}
 │ 𝗣𝗿𝗲𝗳𝗶𝘅: ${prefixText}
-│ 𝗔𝘂𝘁𝗵𝗼𝗿: @𝗔𝗸𝗵𝗶𝗿𝗼𝗧𝗘𝗔𝗠
+│ 𝗔𝘂𝘁𝗵𝗼𝗿: ${fonts.bold(`${author} || @AkhiroTEAM`)}
 ├──────────────⟡
 │ [ 👑 | 𝗔𝗞𝗛𝗜𝗥𝗢 𝗩2]
 ╰──────────────⟡`;
