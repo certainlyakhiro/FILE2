@@ -1,7 +1,6 @@
 import fs from "fs";
 import axios from "axios";
-import pastebin from "pastebin-api";
-const { PasteClient } = pastebin as any;
+import { PasteClient } from "pastebin-api";
 
 export const metadata: { [key: string]: any } = {
   name: "system",
