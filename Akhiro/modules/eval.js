@@ -8,9 +8,8 @@ export const metadata = {
 };
 
 export async function onRun(context) {
-  context.code = context.args.join(" ");
-  // i know 'with' is risky, but it's helpful.
-  with (context) {
-    await eval(`(async () => {${code}})()`);
-  }
+  const code = context.args.join(" ");
+
+  const { onRun } = await eval(code);
+  await onRun?.(context);
 }
