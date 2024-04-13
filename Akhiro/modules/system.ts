@@ -146,7 +146,7 @@ Please react to this message to confirm!`,
       return false;
     }
     const data: string = fs.readFileSync(filePath, "utf-8");
-    const client: typeof PasteClient = new PasteClient(
+    const client: any = new PasteClient(
       "R02n6-lNPJqKQCd5VtL4bKPjuK6ARhHb",
     );
     const url: string = await client.createPaste({
