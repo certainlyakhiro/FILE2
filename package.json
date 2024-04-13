@@ -22,6 +22,7 @@
     "moment-timezone": "^0.5.45",
     "mqtt": "3.0.0",
     "npmlog": "1.2.0",
+    "pastebin-api": "^7.0.0",
     "request": "2.53.0",
     "ts-node": "^10.9.2",
     "websocket-stream": "5.5.0",
