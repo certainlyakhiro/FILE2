@@ -57,7 +57,7 @@ module.exports = {
 `;
 
       const attachment = fs.createReadStream(
-        __dirname + "/cache/system/info.mp4",
+        __dirname + "/cache/system/info.gif",
       );
       api.sendMessage(
         {
