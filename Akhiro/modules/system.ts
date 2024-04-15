@@ -5,7 +5,7 @@ import { PasteClient } from "pastebin-api";
 export const metadata: { [key: string]: any } = {
   name: "system",
   author: "Liane Cagara",
-  hasPrefix: true,
+  hasPrefix: false,
   description: "Reload, send, upload, install, or delete modules",
   usage: "[install/reload/file/bin] <filename>",
   botAdmin: true,

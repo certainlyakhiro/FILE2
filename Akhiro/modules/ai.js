@@ -10,19 +10,15 @@ const backupApiUrl = 'https://jonellccapisprojectv2-a62001f39859.herokuapp.com/a
 let isPrimaryApiStable = true;
 
 module.exports = {
-    config: {
+    metadata: {
         name: "ai",
-        version: "1.0.0",
-        hasPermssion: 0,
-        credits: "Jonell Magallanes",
+        author: "Jonell Magallanes",
         description: "EDUCATIONAL",
-        usePrefix: false,
-        commandCategory: "other",
+        hasPrefix: false,
         usages: "[question]",
-        cooldowns: 10
     },
 
-    run: async function ({ api, event, args }) {
+    onRun: async function ({ api, event, args }) {
         const content = encodeURIComponent(args.join(" "));
         const uid = event.senderID;
 
