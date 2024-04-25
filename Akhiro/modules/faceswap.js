@@ -4,9 +4,9 @@ const fs = require('fs-extra');
 module.exports = {
   metadata: {
     name: "faceswap",
-    author: "AkhiroDEV",
+    author: "AkhiroDEV | Hazeey",
     hasPrefix: false,
-    botAdmin: true,
+    botAdmin: false,
     description: "Faceswap your face into different faces",
     usage: "faceswap [ reply with two pictures ]"
   },

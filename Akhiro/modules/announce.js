@@ -5,7 +5,6 @@ const { resolve } = require("path");
 module.exports = {
   metadata: {
     name: "announce",
-    role: 1,
     author: "AkhiroDEV | LiANE | Rui",
     hasPrefix: false,
     description: "Announce a message to all groups",
@@ -18,7 +17,7 @@ module.exports = {
     const custom = args.join(" ");
 
     const currentDate = new Date().toLocaleDateString();
-    const currentTime = new Date().toLocaleTimeString();
+    const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila' });
 
     async function sendMessage(thread) {
       try {

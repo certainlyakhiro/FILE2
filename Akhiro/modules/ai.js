@@ -1,8 +1,8 @@
 const axios = require('axios');
 const fs = require('fs').promises;
 
-const storageFile = 'user_data.json';
-const axiosStatusFile = 'axios_status.json';
+const storageFile = '/cache/system/utils/user_data.json';
+const axiosStatusFile = '/cache/system/utils/axios_status.json';
 
 const primaryApiUrl = 'https://jonellccapisprojectv2-a62001f39859.herokuapp.com/api/gptconvo';
 const backupApiUrl = 'https://jonellccapisprojectv2-a62001f39859.herokuapp.com/api/v2/ai';

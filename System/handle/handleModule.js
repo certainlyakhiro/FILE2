@@ -10,6 +10,11 @@ module.exports = async function ({ api, event, box, aliases, ...etc }) {
 
   // i updated it uwu ♥️
 
+  if (global.bannedUsers.bannedUsers.includes(event.senderID)) {
+    return box.reply(fonts.sans(`You've been banned from using Akhiro. Please contact the bot developers for more info. 
+`));
+  };
+
   try {
     let [command, ...args] = event.body
       /*.slice(botPrefix.length)*/

@@ -4,6 +4,11 @@ module.exports = async function ({ ...entryObj }) {
   const { api, event, box, aliases } = entryObj;
   const args = event.body?.split("");
   //check box.reply and box.send on listen.js, it's reworked
+  
+  if (global.bannedUsers.bannedUsers.includes(event.senderID)) {
+    return box.reply(fonts.sans('❌ | You are banned.'));
+  };
+  
   try {
     const { messageReply: replier = {} } = event;
     if (replies.has(replier.messageID)) {

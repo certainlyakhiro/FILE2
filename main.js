@@ -87,7 +87,7 @@ async function start() {
       console.log(gradient.retro("AkhiroBOT System Information"));
       console.log(gradient.retro("> Name: " + global.Akhiro.botName));
       console.log(gradient.retro("> Developed by: Akhiro Rui and Liane"));
-      console.log(gradient.retro('> Time: [ ' + new Date().toLocaleTimeString() + ' ]'));
+      console.log(gradient.retro('> Time: [ ' + new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila' }) + ' ]'));
       login({ appState: state }, (err, api) => {
         if (err) {
           logger.error("❌ | Error while logging in: ");

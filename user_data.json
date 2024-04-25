@@ -1,0 +1,68 @@
+{
+  "100073467349726": {
+    "requestCount": 3,
+    "responses": [
+      {
+        "question": "miss%20u",
+        "response": "I'm flattered! I'm here whenever you need me. How can I assist you today?"
+      },
+      {
+        "question": "what%20is%20egg",
+        "response": "An egg is a nutritious food that is laid by female animals such as birds, reptiles, and fish. It consists of a protective shell, egg white (albumen), and a yolk. Eggs are a good source of protein, vitamins, and minerals, making them a popular and versatile ingredient in cooking."
+      },
+      {
+        "question": "Anong%20meaning%20ng%20love",
+        "response": "Ang ibig sabihin ng pag-ibig ay isang malalim na damdamin ng pagmamahal, pag-aalaga, at pagmamahal sa isang tao, bagay, o sitwasyon. Ito ay nagdudulot ng saya, ligaya, at kabuuan sa buhay ng isang tao. "
+      }
+    ],
+    "apiUsed": "Primary Axios"
+  },
+  "100038843467088": {
+    "requestCount": 2,
+    "responses": [
+      {
+        "question": "what%20is%20the%20meaning%20of%20love%3F",
+        "response": "The meaning of love is a complex and multi-faceted concept that has been explored and interpreted in various ways throughout history. Love can be described as a deep, intense feeling of affection, care, and connection towards another person. It can involve emotional attachment, empathy, compassion, and a sense of intimacy. Love is often considered to be a driving force in human relationships and can manifest in different forms such as romantic love, platonic love, familial love, and self-love. Overall, love is a powerful and transformative emotion that shapes our interactions, motivations, and perceptions in profound ways."
+      },
+      {
+        "question": "I%20thin%20we%20love%20you%20each%20other%20na",
+        "response": "It seems like you may be trying to express that you feel love for someone. Love is a beautiful and powerful emotion that can bring warmth and happiness to our lives. It's important to cherish and appreciate the love we have for others and to express it in meaningful ways. If you want to share your feelings with someone, it's wonderful to do so openly and honestly. Love can strengthen bonds and create meaningful connections between people."
+      }
+    ],
+    "apiUsed": "Primary Axios"
+  },
+  "61550613142771": {
+    "requestCount": 1,
+    "responses": [
+      {
+        "question": "bat%20ngayon%20kalang%20ha%3F",
+        "response": "Kasalukuyan akong narito at handa kang sagutin o tulungan sa anumang katanungan mo. Anong gusto mong malaman o gawin ngayon?"
+      }
+    ],
+    "apiUsed": "Primary Axios"
+  },
+  "61554222594723": {
+    "requestCount": 1,
+    "responses": [
+      {
+        "question": "fix%20the%20code%0A%0A%2F%2Ffile%3A%20faceswap.js%0A%0Aconst%20axios%20%3D%20require('axios')%3B%0Aconst%20fs%20%3D%20require('fs-extra')%3B%0A%0Amodule.exports%20%3D%20%7B%0A%20%20metadata%3A%20%7B%0A%20%20%20%20name%3A%20%22faceswap%22%2C%0A%20%20%20%20author%3A%20%22AkhiroDEV%22%2C%0A%20%20%20%20hasPrefix%3A%20false%2C%0A%20%20%20%20botAdmin%3A%20true%2C%0A%20%20%20%20description%3A%20%22Faceswap%20your%20face%20into%20different%20faces%22%2C%0A%20%20%20%20usage%3A%20%22faceswap%20%5B%20reply%20with%20two%20pictures%20%5D%22%0A%20%20%7D%2C%0A%20%20async%20onRun(%7B%20api%2C%20event%2C%20args%20%7D)%20%7B%0A%20%20%20%20%20%20const%20args%20%3D%20event.body.split(%2F%5Cs%2B%2F)%3B%0A%20%20args.shift()%3B%20%0A%0A%20%20const%20reply%20%3D%20(message)%20%3D%3E%20api.sendMessage(message%2C%20event.threadID%2C%20event.messageID)%3B%0A%0A%20%20if%20(event.type%20%3D%3D%3D%20%22message_reply%22)%20%7B%0A%20%20%20%20const%20attachments%20%3D%20event.messageReply.attachments.filter(attachment%20%3D%3E%20attachment.type%20%3D%3D%3D%20%22photo%22)%3B%0A%0A%20%20%20%20if%20(attachments.length%20%3E%3D%202)%20%7B%0A%20%20%20%20%20%20const%20%5Burl1%2C%20url2%5D%20%3D%20attachments.map(attachment%20%3D%3E%20attachment.url)%3B%0A%20%20%20%20%20%20const%20path%20%3D%20__dirname%20%2B%20%60%2Fcache%2Fswapped_image.jpg%60%3B%0A%0A%20%20%20%20%20%20api.sendMessage(%22%F0%9F%94%AE%20%7C%20%F0%9D%99%BF%F0%9D%9A%95%F0%9D%9A%8E%F0%9D%9A%8A%F0%9D%9A%9C%F0%9D%9A%8E%20%F0%9D%9A%A0%F0%9D%9A%8A%F0%9D%9A%92%F0%9D%9A%9D%20%F0%9D%9A%A0%F0%9D%9A%91%F0%9D%9A%92%F0%9D%9A%95%F0%9D%9A%8E%20%F0%9D%9A%A0%F0%9D%9A%8E%20%F0%9D%9A%9C%F0%9D%9A%A0%F0%9D%9A%8A%F0%9D%9A%99%20%F0%9D%9A%A2%F0%9D%9A%98%F0%9D%9A%9E%F0%9D%9A%9B%20%F0%9D%9A%92%F0%9D%9A%96%F0%9D%9A%8A%F0%9D%9A%90%F0%9D%9A%8E%F0%9D%9A%9C...%22%2C%20event.threadID%2C%20event.messageID)%3B%0A%0A%20%20%20%20%20%20try%20%7B%0A%20%20%20%20%20%20%20%20const%20response%20%3D%20await%20axios.get('https%3A%2F%2Fhaze-faceswap.replit.app%2Fswap'%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20params%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20swap_image%3A%20url1%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20target_image%3A%20url2%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D)%3B%0A%0A%20%20%20%20%20%20%20%20const%20processedImageURL%20%3D%20response.data.hazeswap%3B%0A%20%20%20%20%20%20%20%20const%20%7B%20data%20%7D%20%3D%20await%20axios.get(processedImageURL%2C%20%7B%20responseType%3A%20%22stream%22%20%7D)%3B%0A%0A%20%20%20%20%20%20%20%20const%20writer%20%3D%20fs.createWriteStream(path)%3B%0A%20%20%20%20%20%20%20%20data.pipe(writer)%3B%0A%0A%20%20%20%20%20%20%20%20writer.on('finish'%2C%20()%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20api.sendMessage(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20body%3A%20%22%F0%9F%94%AE%20%F0%9D%99%B8%F0%9D%9A%96%F0%9D%9A%8A%F0%9D%9A%90%F0%9D%9A%8E%20%F0%9D%9A%82%F0%9D%9A%A0%F0%9D%9A%8A%F0%9D%9A%99%20%F0%9D%9A%82%F0%9D%9A%9E%F0%9D%9A%8C%F0%9D%9A%8C%F0%9D%9A%8E%F0%9D%9A%9C%F0%9D%9A%9C%F0%9D%9A%8F%F0%9D%9A%9E%F0%9D%9A%95%F0%9D%9A%95%F0%9D%9A%A2%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20attachment%3A%20fs.createReadStream(path)%0A%20%20%20%20%20%20%20%20%20%20%7D%2C%20event.threadID%2C%20(err%2C%20messageInfo)%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(err)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20reply(%22%F0%9F%A4%96%20%F0%9D%99%B4%F0%9D%9A%9B%F0%9D%9A%9B%F0%9D%9A%98%F0%9D%9A%9B%20%F0%9D%9A%9C%F0%9D%9A%8E%F0%9D%9A%97%F0%9D%9A%8D%F0%9D%9A%92%F0%9D%9A%97%F0%9D%9A%90%20%F0%9D%9A%96%F0%9D%9A%8E%F0%9D%9A%9C%F0%9D%9A%9C%F0%9D%9A%8A%F0%9D%9A%90%F0%9D%9A%8E%3A%20%22%20%2B%20err)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20fs.unlinkSync(path)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%7D)%3B%0A%20%20%20%20%20%20%20%20%7D)%3B%0A%20%20%20%20%20%20%7D%20catch%20(error)%20%7B%0A%20%20%20%20%20%20%20%20reply(%60%F0%9F%A4%96%20%F0%9D%99%BF%F0%9D%9A%9B%F0%9D%9A%98%F0%9D%9A%8C%F0%9D%9A%8E%F0%9D%9A%9C%F0%9D%9A%9C%F0%9D%9A%8E%F0%9D%9A%9C%F0%9D%9A%92%F0%9D%9A%97%F0%9D%9A%90%20%F0%9D%9A%92%F0%9D%9A%96%F0%9D%9A%8A%F0%9D%9A%90%F0%9D%9A%8E%F0%9D%9A%9C%3A%20%24%7Berror%7D%60)%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20reply(%22%F0%9F%94%AE%20%F0%9D%99%B5%F0%9D%9A%8A%F0%9D%9A%8C%F0%9D%9A%8E%20%F0%9D%9A%82%F0%9D%9A%A0%F0%9D%9A%8A%F0%9D%9A%99%5Cn%5Cn%F0%9D%9A%84%F0%9D%9A%9C%F0%9D%9A%8A%F0%9D%9A%90%F0%9D%9A%8E%3A%20%F0%9D%9A%9C%F0%9D%9A%A0%F0%9D%9A%8A%F0%9D%9A%99%20%5B%20%F0%9D%9A%9B%F0%9D%9A%8E%F0%9D%9A%99%F0%9D%9A%95%F0%9D%9A%A2%201%20%F0%9D%9A%8A%F0%9D%9A%97%F0%9D%9A%8D%202%20%F0%9D%9A%92%F0%9D%9A%96%F0%9D%9A%8A%F0%9D%9A%90%F0%9D%9A%8E%20%5D%22)%3B%0A%20%20%20%20%20%7D%0A%20%20%20%7D%0A%20%7D%3B%0A%7D",
+        "response": "It appears that there is a syntax error in the code. The issue is that you have redeclared the `args` variable in the `onRun` function, causing a naming conflict. To resolve this, you should remove the redeclaration of `args` inside the `onRun` function. Here's the corrected code:\n\n```javascript\n//file: faceswap.js\n\nconst axios = require('axios');\nconst fs = require('fs-extra');\n\nmodule.exports = {\n  metadata: {\n    name: \"faceswap\",\n    author: \"AkhiroDEV\",\n    hasPrefix: false,\n    botAdmin: true,\n    description: \"Faceswap your face into different faces\",\n    usage: \"faceswap [ reply with two pictures ]\"\n  },\n  async onRun({ api, event, args }) {\n    // Remove the redeclaration of args here\n    // const args = event.body.split(/\\s+/);\n    // args.shift(); \n\n    const reply = (message) => api.sendMessage(message, event.threadID, event.messageID);\n\n    if (event.type === \"message_reply\") {\n      const attachments = event.messageReply.attachments.filter(attachment => attachment.type === \"photo\");\n\n      if (attachments.length >= 2) {\n        const [url1, url2] = attachments.map(attachment => attachment.url);\n        const path = __dirname + `/cache/swapped_image.jpg`;\n\n        api.sendMessage(\"🔮 | 𝙿𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝 𝚠𝚑𝚒𝚕𝚎 𝚠𝚎 𝚜𝚠𝚊𝚙 𝚢𝚘𝚞𝚛 𝚒𝚖𝚊𝚐𝚎𝚜...\", event.threadID, event.messageID);\n\n        try {\n          const response = await axios.get('https://haze-faceswap.replit.app/swap', {\n            params: {\n              swap_image: url1,\n              target_image: url2\n            }\n          });\n\n          const processedImageURL = response.data.hazeswap;\n          const { data } = await axios.get(processedImageURL, { responseType: \"stream\" });\n\n          const writer = fs.createWriteStream(path);\n          data.pipe(writer);\n\n          writer.on('finish', () => {\n            api.sendMessage({\n              body: \"🔮 𝙸𝚖𝚊𝚐𝚎 𝚂𝚠𝚊𝚙 𝚂𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕𝚢\",\n              attachment: fs.createReadStream(path)\n            }, event.threadID, (err, messageInfo) => {\n              if (err) {\n                reply(\"🤖 𝙴𝚛𝚛𝚘𝚛 𝚜𝚎𝚗𝚍𝚒𝚗𝚐 𝚖𝚎𝚜𝚜𝚊𝚐𝚎: \" + err);\n              } else {\n                fs.unlinkSync(path);\n              }\n            });\n          });\n        } catch (error) {\n          reply(`🤖 𝙿𝚛𝚘𝚌𝚎𝚜𝚜𝚎𝚜𝚒𝚗𝚐 𝚒𝚖𝚊𝚐𝚎𝚜: ${error}`);\n        }\n      } else {\n        reply(\"🔮 𝙵𝚊𝚌𝚎 𝚂𝚠𝚊𝚙\\n\\n𝚄𝚜𝚊𝚐𝚎: 𝚜𝚠𝚊𝚙 [ 𝚛𝚎𝚙𝚕𝚢 1 𝚊𝚗𝚍 2 𝚒𝚖𝚊𝚐𝚎 ]\");\n      }\n    }\n  }\n};\n```\n\nBy removing the redeclaration of `args` inside the `onRun` function, the code should now be free of syntax errors."
+      }
+    ],
+    "apiUsed": "Primary Axios"
+  },
+  "100044850682050": {
+    "requestCount": 2,
+    "responses": [
+      {
+        "question": "what%20is%20the%20fuel%20range%20of%20chevrolet%20spin%202014",
+        "response": "The fuel range of a Chevrolet Spin 2014 may vary based on factors such as the engine type, driving conditions, and maintenance. However, typically, the Chevrolet Spin 2014 has a fuel tank capacity of around 53 liters and can achieve an average fuel consumption of about 11 kilometers per liter. Therefore, the estimated fuel range for the Chevrolet Spin 2014 would be approximately 583 kilometers on a full tank of gas."
+      },
+      {
+        "question": "what%20is%20the%20fuel%20range%20of%20toyota%20fortuner",
+        "response": "The fuel range of a Toyota Fortuner can vary depending on the model year, engine type, and driving conditions. However, as a general estimate, the Toyota Fortuner has a fuel tank capacity of around 80 liters and can achieve an average fuel consumption of approximately 10 kilometers per liter. Therefore, on a full tank of gas, the estimated fuel range for a Toyota Fortuner would be around 800 kilometers. It's important to note that actual fuel range may vary based on driving habits and other factors."
+      }
+    ],
+    "apiUsed": "Primary Axios"
+  }
+}

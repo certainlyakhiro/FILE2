@@ -1,5 +1,7 @@
 // rui waz here -_-
 // i liek modular code
+const cwd = process.cwd();
+const fs = require('fs-extra');
 
 module.exports = function ({ api, event }) {
   const { logger } = require("./logger");
@@ -137,6 +139,8 @@ module.exports = function ({ api, event }) {
       console.log(`New pending reaction at: `, i, box.reactions);
     });
   }
+
+  global.bannedUsers = fs.readJSONSync(`${cwd}/Akhiro/modules/banList.json`);
 
   /*
 const info = await box.waitForReaction("React an emoji");
