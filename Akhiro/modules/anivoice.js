@@ -1,0 +1,38 @@
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
+
+module.exports = {
+  metadata: {
+    name: "anivoice",
+    author: "Vex | AkhiroDEV",
+    hasPrefix: false,
+    description: "Get a random anime voice",
+    usage: "anivoice [ query ]"
+  },
+
+  onRun: async function ({ api, event, args, box }) {
+    api.setMessageReaction("🕐", event.messageID, (err) => {}, true);
+    const categories = ["jjk", "naruto", "ds", "aot", "bleach", "onepiece"];
+
+    if (args.length !== 1 || !categories.includes(args[0].toLowerCase())) {
+      return box.reply(`Please specify a valid category. Available categories: ${categories.join(", ")}`);
+    }
+
+    try {
+      const category = args[0].toLowerCase();
+      const response = await axios.get(`https://anivoice-kshitizz.onrender.com/kshitiz/${category}`, { responseType: "arraybuffer" });
+
+      const tempVoicePath = path.join(__dirname, "cache", `${Date.now()}.mp3`);
+      fs.writeFileSync(tempVoicePath, Buffer.from(response.data, 'binary'));
+
+      const stream = fs.createReadStream(tempVoicePath);
+      box.reply({ attachment: stream });
+
+      api.setMessageReaction("✅", event.messageID, (err) => {}, true);
+    } catch (error) {
+      console.error(error);
+      box.reply("Sorry, an error occurred while processing your request. \n\n" + error.message);
+    }
+  }
+};
