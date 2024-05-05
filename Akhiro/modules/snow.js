@@ -17,7 +17,7 @@ module.exports = {
     try {
       box.send(`Please wait..`);
       const response = await axios.get(`https://hashier-api-snowflake.vercel.app/api/snowflake?ask=${encodeURIComponent(query)}`);
-      const answer = response.data.message;
+      const answer = response.data.output;
       box.edit(`${answer}`);
     } catch (error) {
       console.log(error);
