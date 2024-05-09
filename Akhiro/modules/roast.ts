@@ -23,6 +23,7 @@ export async function onRun({ box, event }) {
     box.send(`Hello there @${mentionName}, I just want to say to you that ${roast}`);
   } catch (error) {
     console.log(error);
+    const mentionName = mention.length === 1 ? event.mentions[mention[0]].replace("@", "") : "someone";
     box.send(`Hmph, you're safe @${mentionName}\n\nERROR: ${error.message}`);
   }
 }
