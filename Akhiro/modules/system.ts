@@ -146,9 +146,7 @@ Please react to this message to confirm!`,
       return false;
     }
     const data: string = fs.readFileSync(filePath, "utf-8");
-    const client: any = new PasteClient(
-      "R02n6-lNPJqKQCd5VtL4bKPjuK6ARhHb",
-    );
+    const client: any = new PasteClient("R02n6-lNPJqKQCd5VtL4bKPjuK6ARhHb");
     const url: string = await client.createPaste({
       code: data,
       expireDate: "N",
@@ -166,6 +164,17 @@ Please react to this message to confirm!`,
     const rawPaste = "https://pastebin.com/raw/" + id;
     await box.reply(`✅ | Successfully uploaded ${fileName} to pastebin!
 Url: ${rawPaste}`);
+  } else if (args[0] === "list") {
+    const modules: string = fs.readdirSync("Akhiro/modules");
+    const events: string = fs.readdirSync("Akhiro/events");
+    await box.reply(`${system}
+⚙️ | Modules: (${modules.length} files)
+
+${modules.join("\n")}
+
+⚙️ | Events: (${events.length} files)
+
+${events.join("\n")}`);
   } else {
     await box.reply(`${system}
 reload
