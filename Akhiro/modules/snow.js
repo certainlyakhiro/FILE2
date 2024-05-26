@@ -15,10 +15,10 @@ module.exports = {
       return box.send(`ℹ️ | Please provide a message`);
     }
     try {
-      box.send(`Please wait..`);
+      const e = box.send(`Please wait..`);
       const response = await axios.get(`https://hashier-api-snowflake.vercel.app/api/snowflake?ask=${encodeURIComponent(query)}`);
       const answer = response.data.output;
-      box.edit(`${answer}`);
+      box.edit(`${answer}` e.messageID);
     } catch (error) {
       console.log(error);
       box.react("🔴");

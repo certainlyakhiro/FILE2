@@ -6,7 +6,7 @@ export const metadata = {
   hasPrefix: false,
   description: "Talk to Claude",
   usage: "{p}claude [query]"
-},
+};
   export async function onRun({ box, args }) {
     const query = args.join(" ");
     if (!query) {
@@ -14,10 +14,10 @@ export const metadata = {
       return box.send(`ℹ️ | Please provide a message`);
     }
     try {
-      box.send(`Please wait..`);
+      const e = box.send(`Please wait..`);
       const response = await axios.get(`https://hashier-api-claude.vercel.app/api/claude?ask=${encodeURIComponent(query)}`);
       const answer = response.data.response;
-      box.edit(`${answer}`);
+      box.edit(`${answer}`, e.messageID);
     } catch (error) {
       console.log(error);
       box.react("🔴");

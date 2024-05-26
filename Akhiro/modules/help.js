@@ -34,9 +34,8 @@ module.exports = {
       const totalPages = Math.ceil(commands.length / pageSize);
 
       let helpMessage = `
-━━━━━━━━━━━━━━━━━━━
- ====ᑕOᗰᗰᗩᑎᗪՏ ᒪIՏTՏ====
-━━━━━━━━━━━━━━━━━━━`;
+📚 ❲ 𝗔𝗞𝗛𝗜𝗥𝗢 ❳ 𝗖𝗠𝗗𝘀 𝖫𝗂𝗌𝗍
+𝖳𝗈𝗍𝖺𝗅 𝖢𝗈𝗆𝗆𝖺𝗇𝖽𝗌: ${command.length}`;
 
       for (let i = startIndex; i < endIndex; i++) {
         const command = commands[i];
@@ -45,14 +44,9 @@ module.exports = {
         helpMessage += `${name}\n`;
       }
 
-      helpMessage += `━━━━━━━━━━━━━━━━━━━
-              ❲ 𝗣𝗮𝗴𝗲 ${page} 𝗼𝗳  ${totalPages} ❳
-━━━━━━━━━━━━━━━━━━━
-𝗡𝗔𝗠𝗘: ${global.Akhiro.config.botName}
-𝗣𝗥𝗙𝗫: ${global.Akhiro.config.botPrefix}
-━━━━━━━━━━━━━━━━━━━
-              ❲ 👾𝗔𝗸𝗵𝗶𝗿𝗼𝗩2 ❳
-━━━━━━━━━━━━━━━━━━━`;
+      helpMessage += `
+❲ 𝗣𝗮𝗴𝗲 ❳ ${page} | ${totalPages}
+𝗜𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀: 𝖳𝗈 𝗏𝗂𝖾𝗐 𝗍𝗁𝖾 𝗈𝗍𝗁𝖾𝗋 𝗉𝖺𝗀𝖾, 𝗎𝗌𝖾 𝗛𝗲𝗹𝗽 [ 𝗉𝖺𝗀𝖾 𝗇𝗎𝗆𝖻𝖾𝗋 ] 𝗍𝗈 𝗏𝗂𝖾𝗐 𝗍𝗁𝖾 𝗇𝖾𝗑𝗍 𝗉𝖺𝗀𝖾, 𝗈𝗋 𝗂𝖿 𝗒𝗈𝗎 𝗐𝖺𝗇𝗍 𝗍𝗈 𝗌𝖾𝖾 𝗍𝗁𝖾 𝗂𝗇𝖿𝗈 𝗈𝖿 𝗍𝗁𝖾 𝖼𝗈𝗆𝗆𝖺𝗇𝖽 𝗎𝗌𝖾 𝗛𝗲𝗹𝗽 [ 𝖼𝗈𝗆𝗆𝖺𝗇𝖽 𝗇𝖺𝗆𝖾 ] 𝗍𝗈 𝗏𝗂𝖾𝗐 𝗍𝗁𝖾 𝖼𝗈𝗆𝗆𝖺𝗇𝖽 𝗂𝗇𝖿𝗈.`;
 
       box.reply(helpMessage);
     };
@@ -67,23 +61,18 @@ module.exports = {
       } else {
         const targetCommand = aliases(arg);
         if (targetCommand) {
-          const { name, description, usage, hasPrefix } = targetCommand.metadata;
+          const { name, description, usage, hasPrefix, author } = targetCommand.metadata;
           const formattedUsage = usage ? usage.replace("[command]", `${botPrefix}${name}`) : "";
           const prefixText = hasPrefix ? "True" : "False";
           let helpMessage = `
-━━━━━━━━━━━━━━━━━━━
- ====ᑕOᗰᗰᗩᑎᗪՏ ᒪIՏTՏ====
-━━━━━━━━━━━━━━━━━━━
- 𝗡𝗮𝗺𝗲: ${name}
- 𝗣𝗿𝗲𝗳𝗶𝘅: ${prefixText}
- 
- ${description}
- 
- 𝗨𝘀𝗮𝗴𝗲: ${formattedUsage}
- 𝗔𝘂𝘁𝗵𝗼𝗿: @𝗔𝗸𝗵𝗶𝗿𝗼𝗧𝗘𝗔𝗠
-━━━━━━━━━━━━━━━━━━━
-              ❲ 👾𝗔𝗸𝗵𝗶𝗿𝗼𝗩2 ❳
-━━━━━━━━━━━━━━━━━━━`;
+📚 ❲ 𝗔𝗞𝗛𝗜𝗥𝗢 ❳ 𝗖𝗠𝗗𝘀 𝖫𝗂𝗌𝗍
+
+𝗡𝗮𝗺𝗲: ${name}
+𝗣𝗿𝗲𝗳𝗶𝘅: ${prefixText}
+𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻: ${description}
+𝗨𝘀𝗮𝗴𝗲: ${formattedUsage}
+
+𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗱 𝗯𝘆: ${author}`;
           box.reply(helpMessage);
         } else {
           box.reply(`Command "${arg}" not found.`);

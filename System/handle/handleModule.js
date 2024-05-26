@@ -25,13 +25,7 @@ module.exports = async function ({ api, event, box, aliases, ...etc }) {
       command = command.slice(botPrefix.length);
     }
     if (event.body && event.body.toLowerCase() === "bot") {
-      const foo = await box.reply(fonts.sans(`Hello there, May I Introduce Myself first, I'm Akhiro. A an updated version of AkhiroV1 that was developed by the AkhiroTEAM`));
-    await new Promise(resolve => setTimeout(resolve, 5000)); //5000 is 5 seconds
-    await box.edit(fonts.sans("Use the command help to use the command", foo.messageID));
-    await new Promise(resolve => setTimeout(resolve, 5000));
-    box.edit(fonts.sans("Use the command report if you encounter some error(s)", foo.messageID));
-    await new Promise(resolve => setTimeout(resolve, 5000));
-    box.edit(fonts.sans("Developed by the AkhiroTEAM.", foo.messageID));
+      await box.reply(fonts.sans(`Hello there, May I Introduce Myself first, I'm Akhiro. A an updated version of AkhiroV1 that was developed by the AkhiroTEAM`));
     } else if (
       /*event.body && event.body.toLowerCase().startsWith(botPrefix)*/
 
